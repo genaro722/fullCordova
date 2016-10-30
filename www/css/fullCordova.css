@@ -1,0 +1,28 @@
+.home-container{
+    min-height: 100px;
+    border-radius: 10px; 
+    margin-right: 4px;
+    margin-bottom: 4px;
+}
+.default-color{
+    border: 2px solid #958473;
+}
+.flash-color{
+    background: #f89201;
+    border: 2px solid #c26a13;
+}
+.flash-color-o{
+    background: rgba(248, 146, 1, 0.54);
+    border: 2px solid #c26a13;
+}
+.android-color{
+    background: rgb(41, 235, 107);
+    border: 2px solid #20a416;
+}
+.battery-color{
+    background: rgba(67, 191, 208, 0.63);
+    border: 2px solid #8498cd;
+}
+.home-container i{
+    margin-top: 15px;
+}

@@ -1,0 +1,43 @@
+<ion-view view-title="Home">
+    <ion-content style="background: #cecece">
+        <div class="row">
+            <div class="col col-50 home-container text-center" ng-class="{'flash-color-o':!flash,'flash-color':flash}"
+                 ng-click="doFlash()">
+                <i class="fa fa-bolt fa-3x white-text"></i>
+                <p class="white-text">Flashlight</p>
+            </div>
+            <div class="col col-50 home-container text-center default-color"
+                 ng-click="doFlash()">
+                <i class="fa fa-users fa-3x white-text"></i>
+                <p class="white-text">Contacts</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-50 home-container text-center default-color"
+                 ng-click="doVibration()">
+                <img class="fa" src="../img/vibration.png" style="max-height: 50px">
+                <p class="white-text">Vibrate</p>
+            </div>
+            <div class="col col-50 home-container text-center default-color"
+                 ng-click="doOrientation()">
+                <i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>
+                <i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-50 home-container text-center battery-color"
+                 ng-click="doBattery()">
+                <i class="fa fa-battery fa-3x white-text"></i>
+                <p class="white-text">Battery Status</p>
+            </div>
+            <div class="col col-50 home-container text-center android-color"
+                 ng-click="doFlash()">
+                <i class="fa fa-android fa-3x white-text"></i>
+                <p class="white-text">Sistem Info</p>
+            </div>
+        </div>
+        <div class="bar bar-footer bar-balanced">
+            <div class="title"> <i class="fa fa-search-plus"></i>VER CODIGO</div>
+        </div>
+    </ion-content>
+</ion-view>
