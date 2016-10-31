@@ -1,7 +1,9 @@
 angular.module('app.controllers', [])
 
         .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading,
-                $cordovaFlashlight, $cordovaDeviceOrientation, $cordovaVibration, $cordovaBatteryStatus, $rootScope) {
+                $cordovaFlashlight, $cordovaDeviceOrientation, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
+                $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice,
+                $rootScope) {
 //            var $ctrl = this;
 
             $scope.flash = false;
@@ -31,11 +33,11 @@ angular.module('app.controllers', [])
                 $scope.orientation = !$scope.orientation;
             };
 
-            $scope.doVibration = function () {
+            $scope.vibration = function () {
                 $cordovaVibration.vibrate(100);
             };
 
-            $scope.doBattery = function () {
+            $scope.battery = function () {
                 document.addEventListener("deviceready", function () {
                     $rootScope.$on('$cordovaBatteryStatus:status', function (result) {
                         var batteryLevel = result.level;       // (0 - 100)
@@ -63,6 +65,121 @@ angular.module('app.controllers', [])
                 }, false);
             };
 
+            $scope.camera = function () {
+                $scope.closePopover();
+                document.addEventListener("deviceready", function () {
+
+                    var options = {
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.CAMERA,
+                        saveToPhotoAlbum: false,
+                        encodingType: Camera.EncodingType.JPEG
+                    };
+
+                    $cordovaCamera.getPicture(options).then(function (imageURI) {
+                        var image = document.getElementById('myImage');
+                        image.src = imageURI;
+                    }, function (err) {
+                        // error
+                    });
+//                    $cordovaCamera.cleanup().then(...); // only for FILE_URI
+
+                }, false);
+            };
+
+            $scope.capture = function () {
+                var options = {limit: 3};
+
+                $cordovaCapture.captureImage(options).then(function (imageData) {
+                    // Success! Image data is here
+                }, function (err) {
+                    // An error occurred. Show a message to the user
+                });
+            };
+
+            $scope.voice = function () {
+                var options = {limit: 3, duration: 10};
+
+                $cordovaCapture.captureAudio(options).then(function (audioData) {
+                    // Success! Audio data is here
+                }, function (err) {
+                    // An error occurred. Show a message to the user
+                });
+            };
+
+            $scope.scanner = function () {
+                $cordovaBarcodeScanner
+                        .scan()
+                        .then(function (barcodeData) {
+                            $scope.message(barcodeData);
+                        }, function (error) {
+                            // An error occurred
+                        });
+            };
+
+            $scope.encode = function () {
+                $cordovaBarcodeScanner
+                        .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://youtube.com")
+                        .then(function (success) {
+                            $scope.message(success);
+                        }, function (error) {
+                            // An error occurred
+                        });
+            };
+
+            $scope.gallery = function () {
+                var options = {
+                    maximumImagesCount: 10,
+                    width: 800,
+                    height: 800,
+                    quality: 80
+                };
+                $cordovaImagePicker.getPictures(options)
+                        .then(function (results) {
+                            for (var i = 0; i < results.length; i++) {
+                                console.log('Image URI: ' + results[i]);
+                            }
+                        }, function (error) {
+                            // error getting photos
+                        });
+            };
+
+            $scope.sistem = function () {
+                document.addEventListener("deviceready", function () {
+                    $cordovaAppVersion.getVersionNumber().then(function (version) {
+                        $scope.version = version;
+                    });
+                }, false);
+                $cordovaAppVersion.getVersionCode().then(function (build) {
+                    $scope.build = build;
+                });
+                $cordovaAppVersion.getAppName().then(function (name) {
+                    $scope.appName = name;
+                });
+                $cordovaAppVersion.getPackageName().then(function (package) {
+                    $scope.appPackage = package;
+                });
+
+                $scope.device = $cordovaDevice.getDevice();
+
+                $scope.cordova = $cordovaDevice.getCordova();
+
+                $scope.model = $cordovaDevice.getModel();
+
+                $scope.platform = $cordovaDevice.getPlatform();
+
+                $scope.uuid = $cordovaDevice.getUUID();
+
+                $scope.version = $cordovaDevice.getVersion();
+                
+                $ionicModal.fromTemplateUrl('templates/modals/sistemInfo.html', {
+                    scope: $scope
+                }).then(function (modal) {
+                    $scope.modal = modal;
+                    $scope.modal.show();
+                });
+            };
+
             // With the new view caching in Ionic, Controllers are only called
             // when they are recreated or on app start, instead of every page change.
             // To listen for when this page is active (for example, to refresh data),
@@ -74,11 +191,11 @@ angular.module('app.controllers', [])
             $scope.loginData = {};
 
             // Create the login modal that we will use later
-            $ionicModal.fromTemplateUrl('templates/login.html', {
-                scope: $scope
-            }).then(function (modal) {
-                $scope.modal = modal;
-            });
+//            $ionicModal.fromTemplateUrl('templates/login.html', {
+//                scope: $scope
+//            }).then(function (modal) {
+//                $scope.modal = modal;
+//            });
 
             // Triggered in the login modal to close it
             $scope.closeLogin = function () {

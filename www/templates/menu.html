@@ -38,21 +38,24 @@
 
 <script id="options-popover.html" type="text/ng-template">
     <ion-popover-view style="position:relative; top: 40px; left:74%; height:300px">
-    <ion-header-bar>
-    <h1 class="title" style="min-width: 100%;left: 0px;">titulo</h1>
-    </ion-header-bar>
     <ion-content>
-    <li class="item">
+    <li class="item" ng-click="camera()">
     <i class="fa fa-camera"></i> Camera
     </li>
-    <li class="item">
+    <li class="item" ng-click="scanner()">
     <i class="ion ion-search"></i> Scanner
     </li>
-    <li class="item">
+    <li class="item" ng-click="encode()">
+    <i class="ion ion-search"></i> Encode
+    </li>
+    <li class="item" ng-click="gallery()">
     <i class="fa fa-picture-o"></i> Gallery
     </li>
-    <li class="item">
+    <li class="item" ng-click="capture()">
     <i class="ion ion-qr-scanner"></i> Capture
+    </li>
+    <li class="item" ng-click="voice()">
+    <i class="ion ion-mic-a"></i> Voice
     </li>
     </ul>
     </ion-content>
