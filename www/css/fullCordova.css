@@ -26,3 +26,28 @@
 .home-container i{
     margin-top: 15px;
 }
+.menu .avatar {
+    height: 66px !important;
+    width: 66px !important;
+    top: 15% !important;
+    left: 16px !important;
+}
+.name{
+    bottom: 0;
+    font-size: 18px;
+    left: 24px;
+    position: absolute;
+}
+.dark-bg {
+    /*color de arriba*/
+    background-color: #616161;
+}
+.tabs-top > .tabs, .tabs.tabs-top {
+    top: 0px;
+}
+.footer-menu{
+    background-color: #33cd5f !important;
+    background: #33cd5f;
+    position: fixed;
+    bottom: 0px;
+}

@@ -1,10 +1,44 @@
 /* Empty. Add your own CSS if you like */
 .text-center{
-    text-align: center;
+    text-align: center !important;
 }
 .white-text{
     color:white;
 }
 .margin-right-5{
     margin-right: 5px;
+}
+.item-divider {
+    background-color: #dcd9d9 !important;
+}
+.has-header {
+    top: 44px !important;
+}
+.item {
+    border-color: #ddd !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+}
+.font-18{
+    font-size: 18px !important;
+}
+/*TOGGLE*/
+.my-toggle.toggle-calm input:checked + .track {
+    border-color: transparent;
+    background-color: rgba(57, 93, 128, 0.37);
+}
+.my-toggle input:checked + .track .handle {
+    background-color: #395d80;
+}
+.my-toggle .track {
+    background-color: rgba(226, 226, 226, 0.36);
+}
+.my-toggle .handle {
+    background-color: #e2e2e2;
+}
+.my-toggle .handle {
+    top: 1px;
+}
+.my-toggle .track {
+    height: 18px;
 }

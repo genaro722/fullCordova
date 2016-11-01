@@ -19,25 +19,34 @@ angular.module('app.route', [])
                             }
                         }
                     })
-                    .state('app.playlists', {
-                        url: '/playlists',
+                    .state('app.components', {
+                        url: '/components',
                         views: {
                             'menuContent': {
-                                templateUrl: 'templates/playlists.html',
-                                controller: 'PlaylistsCtrl'
+                                templateUrl: 'templates/components.html',
+                                controller: 'componentsCtrl'
                             }
                         }
                     })
-
-                    .state('app.single', {
-                        url: '/playlists/:playlistId',
+                    .state('app.settings', {
+                        url: '/settings',
                         views: {
                             'menuContent': {
-                                templateUrl: 'templates/playlist.html',
-                                controller: 'PlaylistCtrl'
+                                templateUrl: 'templates/settings.html',
+                                controller: 'settingsCtrl'
                             }
                         }
-                    });
+                    })
+                    .state('app.contacts', {
+                        url: '/contacts',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/contacts.html',
+                                controller: 'contactsCtrl'
+                            }
+                        }
+                    })
+                    ;
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/app/home');
         });
