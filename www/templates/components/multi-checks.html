@@ -1,0 +1,29 @@
+<!--<h2 class="title-checks text-center">{{$ctrl.config.title}}</h2>-->
+<div class="row">
+    <div class="col col-50" style="padding: 0px">
+        <div class="item item-checkbox" style="border-width: 0px; white-space: initial" ng-click="$ctrl.none()">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="$ctrl.noneItems">
+            </label>
+            {{$ctrl.config.no}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col" style="padding: 0px">
+        <div class="item item-checkbox" style="border-width: 0px; white-space: initial" ng-repeat="left in $ctrl.listType[0]">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="left.selected" ng-click="$ctrl.add(left)">
+            </label>
+            {{left.name}}
+        </div>
+    </div>
+    <div class="col" style="padding: 0px">
+        <div class="item item-checkbox" style="border-width: 0px; white-space: initial" ng-repeat="right in $ctrl.listType[1]">
+            <label class="checkbox" ng-hide="right.name === ''">
+                <input type="checkbox" ng-model="right.selected" ng-click="$ctrl.add(right)">
+            </label>
+            {{right.name}}
+        </div>
+    </div>
+</div>

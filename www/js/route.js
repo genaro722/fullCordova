@@ -1,8 +1,9 @@
 angular.module('app.route', [])
-
         .config(function ($stateProvider, $urlRouterProvider) {
+            // if none of the above states are matched, use this as the fallback
+            $urlRouterProvider.otherwise('/app/home');
+            
             $stateProvider
-
                     .state('app', {
                         url: '/app',
                         abstract: true,
@@ -47,6 +48,4 @@ angular.module('app.route', [])
                         }
                     })
                     ;
-            // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/app/home');
         });

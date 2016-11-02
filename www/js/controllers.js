@@ -5,6 +5,9 @@ angular.module('app.controllers', [])
                 $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice,
                 $rootScope) {
 //            var $ctrl = this;
+            $scope.dialogo=function(){
+                alert("hola");
+            };
 
             $scope.flash = false;
             $scope.orientation = false;

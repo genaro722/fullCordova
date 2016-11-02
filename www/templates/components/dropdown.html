@@ -1,0 +1,19 @@
+<button class="button button-clear button-dark" ng-click="openPopover($event)" style="width: 90%; text-align: left; padding-bottom: 10px; border-bottom: 1px solid rgba(153, 149, 149, 0.3); margin: 10px; padding-right: 2px; padding-left: 2px;">
+    <span> {{$ctrl.selected}}</span> <i class="fa fa-angle-down" style="position: absolute; right: 0%; bottom: 30%;"></i>
+</button>
+
+<script id="my-popover.html" type="text/ng-template">
+    <ion-popover-view style="top: 58%; left:{{$ctrl.config.left}}">
+    <ion-header-bar ng-hide="$ctrl.config.header">
+    <h1 class="title" style="min-width: 100%;left: 0px;">{{$ctrl.config.title}}</h1>
+    </ion-header-bar>
+    <ion-content>
+    <ul class="list">
+        <li class="item" ng-click="closePopover(false)">None</li>
+        <li class="item" ng-repeat="l in $ctrl.config.list" ng-click="closePopover(l)">
+      {{l.name}}
+        </li>
+    </ul>
+    </ion-content>
+    </ion-popover-view>
+</script>

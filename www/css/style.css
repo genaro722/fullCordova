@@ -42,3 +42,33 @@
 .my-toggle .track {
     height: 18px;
 }
+/********* PONER CHECKBOX CUADRADO Y VERDE***********************/
+.checkbox input:before, .checkbox-icon:before {
+    border-radius: 0px;
+}
+.checkbox input:checked:before, .checkbox input:checked + .checkbox-icon:before {
+    background: #395d80;
+    border-color: #395d80;
+    border-radius: 5px;
+}
+.checkbox input:after, .checkbox-icon:after {
+    -webkit-transition: opacity 0.05s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 33%;
+    left: 25%;
+    display: table;
+    width: 14px;
+    height: 6px;
+    border: 3px solid #fff;
+    border-top: 0;
+    border-right: 0;
+    content: ' ';
+    opacity: 0;
+}
+.title-checks{
+    margin: 10px;
+    font-size: 24px;
+}

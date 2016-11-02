@@ -10,6 +10,7 @@ angular.module('app',
             'ionic-material',
             'ionMdInput',
             'app.route',
+            'app.components',
         'ngCordova'])
 
         .run(function ($ionicPlatform) {
