@@ -80,6 +80,71 @@
             </ion-tab>
 
             <ion-tab title="Components" icon-on="ion-ios-pie" icon-off="ion-ios-pie-outline">
+                <div class="list has-header">
+                    <ion-scroll style="max-height: 510px">
+                        <div class="item item-divider font-18">
+                            Multi Checks
+                        </div>
+                        <!--                        <ion-toggle ng-model="delete">
+                                                    Show Delete?
+                                                </ion-toggle>
+                                                <ion-toggle ng-model="move">
+                                                    Move?
+                                                </ion-toggle>-->
+                        <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
+                            <ion-item ng-show="configlocation.list.length===0">
+                                Lista vacia
+                            </ion-item>
+                            <ion-item ng-repeat="item in configlocation.list track by $index">
+                                {{item.name}}
+                                <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
+                                                   ng-click="deleteItem($index)">
+                                </ion-delete-button>
+                                <ion-reorder-button class="ion-navicon"
+                                                    on-reorder="moveItem(item, $fromIndex, $toIndex)">
+                                </ion-reorder-button>
+                            </ion-item>
+                        </ion-list>
+                        <div class="item item-divider font-18">
+                            Drop Down
+                        </div>
+                        <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
+                            <ion-item ng-show="configLocationDown.list.length===0">
+                                Lista vacia
+                            </ion-item>
+                            <ion-item ng-repeat="item in configLocationDown.list track by $index">
+                                {{item.name}}
+                                <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
+                                                   ng-click="deleteItem2($index)">
+                                </ion-delete-button>
+                                <ion-reorder-button class="ion-navicon"
+                                                    on-reorder="moveItem2(item, $fromIndex, $toIndex)">
+                                </ion-reorder-button>
+                            </ion-item>
+                        </ion-list>
+                        <div class="item item-divider font-18">
+                            My-Stars
+                        </div>
+                        <ion-list>
+                            <ion-item>
+                                <label class="item-input item-stacked-label">
+                                    <span class="input-label">Initial Value</span>
+                                    <input type="number" placeholder="0" ng-model="valueStars">
+                                </label>
+                            </ion-item>
+                            <ion-item>
+                                <label class="item-input item-stacked-label">
+                                    <span class="input-label">Color</span>
+                                    <input type="color" placeholder="#000" ng-model="configStars.color">
+                                </label>
+                            </ion-item>
+                            <ion-item>
+                                    <ion-radio ng-model="configStars.type" ng-value="'input'">type input</ion-radio>
+                                    <ion-radio ng-model="configStars.type" ng-value="'show'">type show</ion-radio>
+                            </ion-item>
+                        </ion-list>
+                    </ion-scroll>
+                </div>
                 <!-- Tab 2 content -->
             </ion-tab>
 
