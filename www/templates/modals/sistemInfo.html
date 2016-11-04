@@ -2,7 +2,7 @@
   <ion-header-bar>
     <h1 class="title">Sistem Info</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+        <button class="button button-clear" ng-click="closeLogin()" style="color:#000"><i class="fa fa-close"></i></button>
     </div>
   </ion-header-bar>
   <ion-content>
@@ -11,12 +11,15 @@
       <p><b>Build: </b> {{build}}</p>
       <p><b>App Name: </b> {{appName}}</p>
       <p><b>App Package: </b> {{appPackage}}</p>
-      <p><b>Device: </b> {{device}}</p>
+      <p><b>Platform: </b> {{platform}}</p>
+      <p><b>Android Version: </b> {{versionAndroid}}</p>
       <p><b>Cordova: </b> {{cordova}}</p>
+      <p><b>Fabricante: </b> {{facturer}}</p>
       <p><b>Model: </b> {{model}}</p>
+      <p><b>Serial: </b> {{serial}}</p>
       <p><b>Platform: </b> {{platform}}</p>
       <p><b>UUID: </b> {{uuid}}</p>
-      <p><b>Version: </b> {{version}}</p>
+      <p><b>Version2: </b> {{version}}</p>
       </div>
   </ion-content>
 </ion-modal-view>

@@ -27,9 +27,9 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header" style="background: #FFF !important; overflow: overlay">
             <ion-list>
-                <!--        <ion-item menu-close ng-click="login()">
-                          Login
-                        </ion-item>-->
+<!--                <ion-item menu-close ng-click="login()">
+                    Login
+                </ion-item>-->
                 <ion-item menu-close href="#/app/home">
                     <i class="fa fa-home margin-right-5"></i> home
                 </ion-item>
@@ -56,20 +56,20 @@
     <li class="item" ng-click="camera()">
     <i class="fa fa-camera"></i> Camera
     </li>
-    <li class="item" ng-click="scanner()">
-    <i class="ion ion-search"></i> Scanner
-    </li>
-    <li class="item" ng-click="encode()">
-    <i class="ion ion-search"></i> Encode
-    </li>
     <li class="item" ng-click="gallery()">
     <i class="fa fa-picture-o"></i> Gallery
     </li>
-    <li class="item" ng-click="capture()">
-    <i class="ion ion-qr-scanner"></i> Capture
-    </li>
     <li class="item" ng-click="voice()">
     <i class="ion ion-mic-a"></i> Voice
+    </li>
+    <li class="item" ng-click="scanner()">
+    <i class="ion ion-search"></i> <s>Scanner</s>
+    </li>
+    <li class="item" ng-click="encode()">
+    <i class="ion ion-search"></i> <s>Encode</s>
+    </li>
+    <li class="item" ng-click="capture()">
+    <i class="ion ion-qr-scanner"></i> <s>Capture</s>
     </li>
     </ul>
     </ion-content>

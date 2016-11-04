@@ -1,0 +1,22 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Image</h1>
+    <div class="buttons">
+        <button class="button button-clear" ng-click="closeLogin()" style="color:#000"><i class="fa fa-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <div class="row" ng-if="galleryPrincipal">
+          <div class="col"
+               style="background-image: url({{galleryPrincipal}});min-height: 250px;margin: 5px; border: 1px solid; border-radius: 10px; background-size: 100% 100%"></div>
+      </div>
+      <div class="row" ng-repeat="row in arrayGallery" ng-hide="arrayGallery.length>1">
+          <div class="col" ng-repeat="image in row"
+               style="background-image: url({{image}}../../img/tools.png);min-height: 250px;margin: 5px; border: 1px solid; border-radius: 10px; background-size: 100% 100%"></div>
+      </div>
+      <div class="row" ng-repeat="row in arrayGallery" ng-show="arrayGallery.length>1">
+          <div class="col col-45" ng-repeat="image in row"
+               style=" background-image: url({{image}}); min-height: 150px; margin: 5px; border: 1px solid; border-radius: 10px; background-size: 100% 100%"></div>
+      </div>
+  </ion-content>
+</ion-modal-view>

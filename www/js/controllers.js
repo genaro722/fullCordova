@@ -2,10 +2,10 @@ angular.module('app.controllers', [])
 
         .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading,
                 $cordovaFlashlight, $cordovaDeviceOrientation, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
-                $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice,
-                $rootScope) {
+                $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice, $cordovaGeolocation,
+                $cordovaMedia, $rootScope) {
 //            var $ctrl = this;
-            $scope.dialogo=function(){
+            $scope.dialogo = function () {
                 alert("hola");
             };
 
@@ -32,43 +32,65 @@ angular.module('app.controllers', [])
                 });
             };
 
+            $scope.location = function () {
+                var posOptions = {timeout: 10000, enableHighAccuracy: false};
+                $cordovaGeolocation
+                        .getCurrentPosition(posOptions)
+                        .then(function (position) {
+                            var lat = position.coords.latitude;
+                            var long = position.coords.longitude;
+                            $scope.message("Lat: " + lat + ", long: " + long);
+                        }, function (err) {
+                            // error
+                        });
+            };
+
             $scope.doOrientation = function () {
                 $scope.orientation = !$scope.orientation;
             };
 
             $scope.vibration = function () {
+                alert("vibrate");
                 $cordovaVibration.vibrate(100);
             };
 
             $scope.battery = function () {
+//                $ionicPlatform.ready(function(){
                 document.addEventListener("deviceready", function () {
-                    $rootScope.$on('$cordovaBatteryStatus:status', function (result) {
-                        var batteryLevel = result.level;       // (0 - 100)
-                        var isPluggedIn = result.isPlugged;   // bool
-                        if (isPluggedIn === true) {
-                            $scope.message('Level: ' + batteryLevel + " Status: Normal");
+                    $rootScope.$on('$cordovaBatteryStatus:status', function (event, result) {
+                        if (result.isPlugged) {
+                            alert("Charging -> " + result.level + "%");
+                        } else {
+                            alert("Battety -> " + result.level + "%");
                         }
-                    });
+//                    $rootScope.$on('$cordovaBatteryStatus:status', function (result) {
+//                        var batteryLevel = result.level;       // (0 - 100)
+//                        var isPluggedIn = result.isPlugged;   // bool
+//                            $scope.message('Level: ' + batteryLevel + " Status: Normal");
 
-                    $rootScope.$on('$cordovaBatteryStatus:critical', function (result) {
-                        var batteryLevel = result.level;       // (0 - 100)
-                        var isPluggedIn = result.isPlugged;   // bool
-                        if (isPluggedIn === true) {
-                            $scope.message('Level: ' + batteryLevel + " Status: Critical");
-                        }
                     });
-
-                    $rootScope.$on('$cordovaBatteryStatus:low', function (result) {
-                        var batteryLevel = result.level;       // (0 - 100)
-                        var isPluggedIn = result.isPlugged;   // bool
-                        if (isPluggedIn === true) {
-                            $scope.message('Level: ' + batteryLevel + " Status: Low");
-                        }
-                    });
+//
+//                    $rootScope.$on('$cordovaBatteryStatus:critical', function (result) {
+//                        var batteryLevel = result.level;       // (0 - 100)
+//                        var isPluggedIn = result.isPlugged;   // bool
+//                        if (isPluggedIn === true) {
+//                            $scope.message('Level: ' + batteryLevel + " Status: Critical");
+//                        }
+//                    });
+//
+//                    $rootScope.$on('$cordovaBatteryStatus:low', function (result) {
+//                        var batteryLevel = result.level;       // (0 - 100)
+//                        var isPluggedIn = result.isPlugged;   // bool
+//                        if (isPluggedIn === true) {
+//                            $scope.message('Level: ' + batteryLevel + " Status: Low");
+//                        }
+//                    });
                 }, false);
             };
 
             $scope.camera = function () {
+                $scope.galleryPrincipal = "";
+                $scope.arrayGallery = [];
                 $scope.closePopover();
                 document.addEventListener("deviceready", function () {
 
@@ -82,7 +104,16 @@ angular.module('app.controllers', [])
                     $cordovaCamera.getPicture(options).then(function (imageURI) {
                         var image = document.getElementById('myImage');
                         image.src = imageURI;
+                        alert(image.src);
+                        $scope.galleryPrincipal = image.src;
+                        $ionicModal.fromTemplateUrl('templates/modals/images.html', {
+                            scope: $scope
+                        }).then(function (modal) {
+                            $scope.modal = modal;
+                            $scope.modal.show();
+                        });
                     }, function (err) {
+                        alert(err);
                         // error
                     });
 //                    $cordovaCamera.cleanup().then(...); // only for FILE_URI
@@ -101,36 +132,56 @@ angular.module('app.controllers', [])
             };
 
             $scope.voice = function () {
-                var options = {limit: 3, duration: 10};
+                var options = {limit: 1, duration: 30};
 
                 $cordovaCapture.captureAudio(options).then(function (audioData) {
+                    alert(audioData);
+                    $scope.play(audioData);
                     // Success! Audio data is here
                 }, function (err) {
                     // An error occurred. Show a message to the user
                 });
             };
+            $scope.play = function (src) {
+                var media = new Media(src, null, null, mediaStatusCallback);
+                $cordovaMedia.play(media);
+            };
+            var mediaStatusCallback = function (status) {
+                if (status == Media.MEDIA_STARTING) {
+                    $ionicLoading.show({template: "Loading..."});
+                } else {
+                    $ionicLoading.hide();
+                }
+            };
 
             $scope.scanner = function () {
-                $cordovaBarcodeScanner
-                        .scan()
-                        .then(function (barcodeData) {
-                            $scope.message(barcodeData);
-                        }, function (error) {
-                            // An error occurred
-                        });
+                document.addEventListener("deviceready", function () {
+                    $cordovaBarcodeScanner
+                            .scan()
+                            .then(function (barcodeData) {
+                                $scope.message(barcodeData);
+                            }, function (error) {
+                                // An error occurred
+                            });
+                }, false);
             };
 
             $scope.encode = function () {
-                $cordovaBarcodeScanner
-                        .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://youtube.com")
-                        .then(function (success) {
-                            $scope.message(success);
-                        }, function (error) {
-                            // An error occurred
-                        });
+                document.addEventListener("deviceready", function () {
+                    $cordovaBarcodeScanner
+                            .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://youtube.com")
+                            .then(function (success) {
+                                $scope.message(success);
+                            }, function (error) {
+                                // An error occurred
+                            });
+                }, false);
             };
 
             $scope.gallery = function () {
+                $scope.galleryPrincipal = "";
+                $scope.arrayGallery = [];
+                var row = [];
                 var options = {
                     maximumImagesCount: 10,
                     width: 800,
@@ -140,14 +191,27 @@ angular.module('app.controllers', [])
                 $cordovaImagePicker.getPictures(options)
                         .then(function (results) {
                             for (var i = 0; i < results.length; i++) {
-                                console.log('Image URI: ' + results[i]);
+                                if (row.lenth < 2) {
+                                    row.push(results[i]);
+                                }
+                                if (row.lenth === 2) {
+                                    $scope.arrayGallery.push(row);
+                                    $scope.arrayGallery = [];
+                                }
                             }
+                            $ionicModal.fromTemplateUrl('templates/modals/images.html', {
+                                scope: $scope
+                            }).then(function (modal) {
+                                $scope.modal = modal;
+                                $scope.modal.show();
+                            });
                         }, function (error) {
+                            alert(error);
                             // error getting photos
                         });
             };
 
-            $scope.sistem = function () {
+            $scope.system = function () {
                 document.addEventListener("deviceready", function () {
                     $cordovaAppVersion.getVersionNumber().then(function (version) {
                         $scope.version = version;
@@ -162,19 +226,16 @@ angular.module('app.controllers', [])
                 $cordovaAppVersion.getPackageName().then(function (package) {
                     $scope.appPackage = package;
                 });
-
-                $scope.device = $cordovaDevice.getDevice();
-
+                $scope.device = JSON.parse($cordovaDevice.getDevice());
+                $scope.platform = $scope.divice.platform;
+                $scope.versionAndroid = $scope.divice.version;
+                $scope.facturer = $scope.divice.manufacturer;
+                $scope.serial = $scope.divice.serial;
                 $scope.cordova = $cordovaDevice.getCordova();
-
                 $scope.model = $cordovaDevice.getModel();
-
                 $scope.platform = $cordovaDevice.getPlatform();
-
                 $scope.uuid = $cordovaDevice.getUUID();
-
-                $scope.version = $cordovaDevice.getVersion();
-                
+                $scope.version2 = $cordovaDevice.getVersion();
                 $ionicModal.fromTemplateUrl('templates/modals/sistemInfo.html', {
                     scope: $scope
                 }).then(function (modal) {
@@ -194,7 +255,7 @@ angular.module('app.controllers', [])
             $scope.loginData = {};
 
             // Create the login modal that we will use later
-//            $ionicModal.fromTemplateUrl('templates/login.html', {
+//            $ionicModal.fromTemplateUrl('templates/modals/images.html', {
 //                scope: $scope
 //            }).then(function (modal) {
 //                $scope.modal = modal;
