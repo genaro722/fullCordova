@@ -31,14 +31,23 @@ function starsCtrl($scope, $timeout) {
                     numberStar(number);
                     $ctrl.count = 0;
                 } else {
-                    $ctrl.count = 0;
-                    $ctrl.value = (number - 1) + 1.5;
-                    $ctrl.stars();
+                    if ($ctrl.config.decimal === true) {
+                        $ctrl.count = 0;
+                        $ctrl.value = (number - 1) + 1.5;
+                        $ctrl.stars();
+                    }
                 }
-            }, 500);
+            }, 400);
         } else {// type = show
         }
     };
+    if ($ctrl.config === null || $ctrl.config === undefined || $ctrl.config === null) {
+        $ctrl.config = {};
+        $ctrl.config.color = 'rgb(56, 126, 245)';
+        $ctrl.config.type = "show";
+        $ctrl.config.size = 2;
+        $ctrl.config.response = 0;
+    }
 
     var numberStar = function (number) {
         for (var h = 0; h < $ctrl.estrella.length; h++) {
@@ -79,10 +88,6 @@ function starsCtrl($scope, $timeout) {
         }
         $ctrl.config.response = $ctrl.value;
     };
-
-    if ($ctrl.config.color === null || $ctrl.config.color === undefined || $ctrl.config.color === "") {
-        $ctrl.config.color = "#000";
-    }
 
     switch ($ctrl.config.size) {
         case 1:

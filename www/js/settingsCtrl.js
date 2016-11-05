@@ -33,8 +33,8 @@ angular.module('app.controllers')
             };
             $scope.moveItem = function (item, fromIndex, toIndex) {
                 //Move the item in the array
-                $scope.configlocation.list.splice(fromIndex, 1);
-                $scope.configlocation.list.splice(toIndex, 0, item);
+                $scope.configlocation.list.splice(fromIndex-1, 1);
+                $scope.configlocation.list.splice(toIndex-1, 0, item);
             };
             
             $scope.deleteItem2 = function (number) {
@@ -42,8 +42,8 @@ angular.module('app.controllers')
             };
             $scope.moveItem2 = function (item, fromIndex, toIndex) {
                 //Move the item in the array
-                $scope.configLocationDown.list.splice(fromIndex, 1);
-                $scope.configLocationDown.list.splice(toIndex, 0, item);
+                $scope.configLocationDown.list.splice(fromIndex-1, 1);
+                $scope.configLocationDown.list.splice(toIndex-1, 0, item);
             };
 
         });

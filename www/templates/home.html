@@ -1,43 +1,44 @@
 <ion-view view-title="Home">
     <ion-content style="background: #cecece">
         <div class="row">
-            <div class="col col-50 home-container text-center" ng-class="{'flash-color-o':!flash,'flash-color':flash}"
+            <button class="col col-50 home-container text-center" ng-class="{'flash-color-o':!flash,'flash-color':flash}"
                  ng-click="doFlash()">
                 <i class="fa fa-bolt fa-3x white-text"></i>
                 <p class="white-text">Flashlight</p>
-            </div>
-            <div class="col col-50 home-container text-center default-color"
-                 ng-click="location()">
-                <i class="fa fa-map fa-3x white-text"></i>
+            </button>
+            <button class="col col-50 home-container text-center default-color"
+                    ng-click="location()" ng-disabled="loadingLocation">
+                <i class="fa fa-3x white-text" ng-class="{'fa-map':loadingLocation===false, 'fa-spin fa-spinner':loadingLocation===true}"></i>
                 <p class="white-text">Geolocation</p>
-            </div>
+            </button>
         </div>
         <div class="row">
-            <div class="col col-50 home-container text-center default-color"
+            <button class="col col-50 home-container text-center default-color"
                  ng-click="vibration()">
                 <img class="fa" src="img/vibration.png" style="max-height: 50px">
-                <p class="white-text"><s>Vibrate</s></p>
-            </div>
-            <div class="col col-50 home-container text-center default-color"
+                <p class="white-text">Vibrate</p>
+            </button>
+            <button class="col col-50 home-container text-center default-color"
                  ng-click="doOrientation()">
                 <i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>
                 <i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>
-            </div>
+                <p class="white-text">Orientation</p>
+            </button>
         </div>
         <div class="row">
-            <div class="col col-50 home-container text-center battery-color"
+            <button class="col col-50 home-container text-center battery-color"
                  ng-click="battery()">
                 <i class="fa fa-battery fa-3x white-text"></i>
-                <p class="white-text"><s>Battery Status</s></p>
-            </div>
-            <div class="col col-50 home-container text-center android-color"
+                <p class="white-text">Battery Status</p>
+            </button>
+            <button class="col col-50 home-container text-center android-color"
                  ng-click="system()">
                 <i class="fa fa-android fa-3x white-text"></i>
                 <p class="white-text">System Info</p>
-            </div>
+            </button>
         </div>
+    </ion-content>
         <div class="bar bar-footer bar-balanced">
             <div class="title"> TEAM CHARAWATO</div>
         </div>
-    </ion-content>
 </ion-view>

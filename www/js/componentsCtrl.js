@@ -2,6 +2,10 @@ angular.module('app.controllers')
 
         .controller('componentsCtrl', function ($scope) {
             
+            $scope.hideCheck=true;
+            $scope.hideDropdown=true;
+            $scope.hideStar=true;
+            
             $scope.configlocation = {
                 list: [{name: "Waterfront", selected: false}, {name: "Retail Anchored", selected: false},
                     {name: "Downtown", selected: false}, {name: "Mountain", selected: false},
@@ -18,8 +22,9 @@ angular.module('app.controllers')
             };
             
             $scope.configStars= {
-                type: "input",//type: input or show
-                size: 3, //size: 1,2,3,4,5.
+                type: "input",//type: input or show. Default Show
+                size: 3, //size: 1,2,3,4,5. Default 2
+                decimal:true, //if it is true you can select decimal numbers
                 color: 'rgb(56, 126, 245)' //the code of the color, the default result is black
 //              response: is the result of the select star
             };

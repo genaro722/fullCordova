@@ -1,20 +1,23 @@
 <ion-view view-title="Components">
     <ion-content style="background: #cecece">
         <ion-scroll style="max-height: 510px">
-        <h4 style="margin: 10px">Multi Checks</h4>
-        <multi-checks config="configlocation"></multi-checks>
-        <ion-list>
-            <ion-item style="white-space: normal">
-                <b>Response:</b> <span ng-repeat="r in configlocation.response">{{r.name}}<span ng-hide="$last">, </span></span>
-            </ion-item>
-        </ion-list>
-        <h4 style="margin: 10px">Dropdown</h4>
-        <drop-down config="configLocationDown"></drop-down>
-        <h4 style="margin: 10px">Stars: {{configStars.response}}</h4>
-        <my-stars config="configStars" value="valueStars"></my-stars>
+            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
+                ng-click="hideCheck = !hideCheck">Multi Checks</h4>
+            <multi-checks config="configlocation" ng-hide="hideCheck"></multi-checks>
+            <ion-list ng-hide="hideCheck">
+                <ion-item style="white-space: normal">
+                    <b>Response:</b> <span ng-repeat="r in configlocation.response">{{r.name}}<span ng-hide="$last">/ </span></span>
+                </ion-item>
+            </ion-list>
+            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
+                ng-click="hideDropdown = !hideDropdown">Dropdown</h4>
+            <drop-down config="configLocationDown" ng-hide="hideDropdown"></drop-down>
+            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
+                ng-click="hideStar = !hideStar">Stars: {{configStars.response}}</h4>
+            <my-stars config="configStars" value="valueStars" ng-hide="hideStar"></my-stars>
         </ion-scroll>
-        <div class="bar bar-footer bar-balanced">
-            <div class="title"> TEAM CHARAWATO</div>
-        </div>
     </ion-content>
+    <div class="bar bar-footer bar-balanced">
+        <div class="title"> TEAM CHARAWATO</div>
+    </div>
 </ion-view>
