@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
         .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading,
                 $cordovaFlashlight, $cordovaDeviceOrientation, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
                 $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice, $cordovaGeolocation,
-                $cordovaMedia, $rootScope) {
+                $cordovaMedia, $cordovaInAppBrowser, $rootScope) {
 //            var $ctrl = this;
             $scope.loadingLocation = false;
             $scope.dialogo = function () {
@@ -44,7 +44,11 @@ angular.module('app.controllers', [])
                             alert("Lat: " + lat + ", long: " + long);
                         }, function (err) {
                             $scope.loadingLocation = false;
-                            alert(err);
+                            if (err.code === 3) {
+                                alert("Revisa tu señal o activa el GPS");
+                            } else {
+                                alert("ERROR");
+                            }
                             // error
                         });
             };
@@ -149,13 +153,38 @@ angular.module('app.controllers', [])
                     $cordovaBarcodeScanner
                             .scan()
                             .then(function (barcodeData) {
+                                $scope.url=barcodeData.text;
                                 alert(JSON.stringify(barcodeData));
+                                $scope.inAppBrowser();
                             }, function (error) {
                                 alert(error);
                                 // An error occurred
                             });
                 }, false);
             };
+            $scope.inAppBrowser = function () {
+
+                var options = {
+                    location: 'yes',
+                    clearcache: 'yes',
+                    toolbar: 'no'
+                };
+
+                document.addEventListener("deviceready", function () {
+                    $cordovaInAppBrowser.open($scope.url, '_blank', options)
+                            .then(function (event) {
+                                // success
+                            })
+                            .catch(function (event) {
+                                // error
+                            });
+
+
+                    $cordovaInAppBrowser.close();
+
+                }, false);
+            };
+
 
             $scope.encode = function () {
                 document.addEventListener("deviceready", function () {
@@ -220,12 +249,7 @@ angular.module('app.controllers', [])
                 $cordovaAppVersion.getPackageName().then(function (package) {
                     $scope.appPackage = package;
                 });
-                var device = $cordovaDevice.getDevice();
-                $scope.device = JSON.parse(device);
-                $scope.platform = $scope.divice.platform;
-                $scope.versionAndroid = $scope.divice.version;
-                $scope.facturer = $scope.divice.manufacturer;
-                $scope.serial = $scope.divice.serial;
+                $scope.device = $cordovaDevice.getDevice();
                 $scope.cordova = $cordovaDevice.getCordova();
                 $scope.model = $cordovaDevice.getModel();
                 $scope.platform = $cordovaDevice.getPlatform();
