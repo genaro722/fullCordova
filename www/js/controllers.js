@@ -300,11 +300,11 @@ angular.module('app.controllers', [])
                     $scope.closeLogin();
                 }, 1000);
             };
-            
-            $scope.languages=[
-                {name:"English", img: "../img/usa.png", text:"Hello, my name is..."},
-                {name:"Españo", img: "../img/spain.png", text:"Hola, mi nombre es..."},
-                {name:"Portuguess", img: "../img/br.png", text:"Hello, my name is..."}
+            $scope.myLenguage = "../img/usa.png";
+            $scope.languages = [
+                {name: "English", img: "../img/usa.png", text: "Hello, my name is CHARAWATO"},
+                {name: "Español", img: "../img/spain.png", text: "Hola, mi nombre es CHARAWATO"},
+                {name: "Portuguess", img: "../img/br.png", text: "Oi, meu nome é CHARAWATO"}
             ];
 
             $scope.openLanguage = function () {
@@ -316,12 +316,20 @@ angular.module('app.controllers', [])
                 });
             };
 
+            $scope.selectLenguage = function (item) {
+                $scope.myLenguage = item.img;
+                $scope.closePopover();
+            };
 
-            $ionicPopover.fromTemplateUrl('options-popover.html', {
-                scope: $scope
-            }).then(function (popover) {
-                $scope.popover = popover;
-            });
+            $scope.openOption = function () {
+                $ionicPopover.fromTemplateUrl('options-popover.html', {
+                    scope: $scope
+                }).then(function (popover) {
+                    $scope.popover = popover;
+                    $scope.openPopover();
+                });
+            };
+
             $scope.openPopover = function ($event) {
                 $scope.popover.show($event);
             };
