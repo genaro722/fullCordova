@@ -29,21 +29,21 @@ angular.module('app.route', [])
                             }
                         }
                     })
+                    .state('app.stars-components', {
+                        url: '/starsComponents',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/containersComponents/starsContainer.html',
+                                controller: 'starsContainerCtrl'
+                            }
+                        }
+                    })
                     .state('app.settings', {
                         url: '/settings',
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/settings.html',
                                 controller: 'settingsCtrl'
-                            }
-                        }
-                    })
-                    .state('app.contacts', {
-                        url: '/contacts',
-                        views: {
-                            'menuContent': {
-                                templateUrl: 'templates/contacts.html',
-                                controller: 'contactsCtrl'
                             }
                         }
                     })

@@ -13,8 +13,8 @@
                 ng-click="hideDropdown = !hideDropdown">Dropdown</h4>
             <drop-down config="configLocationDown" ng-hide="hideDropdown"></drop-down>
             <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
-                ng-click="hideStar = !hideStar">Stars: {{configStars.response}}</h4>
-            <my-stars config="configStars" value="valueStars" ng-hide="hideStar"></my-stars>
+                ui-sref="app.stars-components">Stars</h4>
+            <!--<my-stars config="configStars" value="valueStars" ng-hide="hideStar"></my-stars>-->
         </ion-scroll>
     </ion-content>
     <div class="bar bar-footer bar-balanced">

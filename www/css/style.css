@@ -2,6 +2,9 @@
 .text-center{
     text-align: center !important;
 }
+.text-danger{
+    color: #e40505;
+}
 .white-text{
     color:white;
 }

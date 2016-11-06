@@ -1,14 +1,17 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
         <ion-nav-bar class="bar-positive">
-<!--            <ion-nav-back-button>
-            </ion-nav-back-button>-->
+            <!--            <ion-nav-back-button>
+                        </ion-nav-back-button>-->
 
             <ion-nav-buttons side="left">
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
+                <button class="button button-clear" ng-click="openLanguage()">
+                    <img src="../img/usa.png" style="width: 25px; margin-top: 10px">
+                </button>
                 <button class="button button-icon button-clear  ion-android-more-vertical" ng-click="openPopover()">
                 </button>
             </ion-nav-buttons>
@@ -27,22 +30,19 @@
         </ion-header-bar>
         <ion-content class="stable-bg has-expanded-header" style="background: #FFF !important; overflow: overlay">
             <ion-list>
-<!--                <ion-item menu-close ng-click="login()">
-                    Login
-                </ion-item>-->
+                <!--                <ion-item menu-close ng-click="login()">
+                                    Login
+                                </ion-item>-->
                 <ion-item menu-close href="#/app/home">
                     <i class="fa fa-home margin-right-5"></i> home
                 </ion-item>
                 <ion-item menu-close href="#/app/components">
                     <i class="fa fa-puzzle-piece margin-right-5"></i>components
                 </ion-item>
-                <ion-item menu-close href="#/app/contacts">
-                    <i class="fa fa-users margin-right-5"></i>contacts
-                </ion-item>
                 <ion-item menu-close href="#/app/settings">
                     <i class="fa fa-gears margin-right-5"></i>Settings
                 </ion-item>
-                <ion-item menu-close href="#/app/settings" class="white-text text-center footer-menu">
+                <ion-item menu-close class="white-text text-center" style="background-color: #33cd5f !important">
                     <i class="fa fa-envelope margin-right-5"></i>Contact Us
                 </ion-item>
             </ion-list>
@@ -50,6 +50,19 @@
     </ion-side-menu>
 </ion-side-menus>
 
+<script id="languages-popover.html" type="text/ng-template">
+    <ion-popover-view style="top: 20%; width: 70%">
+    <ion-content>
+   <div class="list">
+   <a class="item item-avatar" ng-repeat="l in languages">
+      <img src="{{l.img}}">
+      <h2>{{l.name}}</h2>
+      <p>{{l.text}}</p>
+    </a>
+   </div>
+    </ion-content>
+    </ion-popover-view>
+</script>
 <script id="options-popover.html" type="text/ng-template">
     <ion-popover-view style="position:relative; top: 40px; left:74%; height:300px">
     <ion-content>

@@ -11,7 +11,27 @@ function starsCtrl($scope, $timeout) {
     $ctrl.sizeStar = "";
     $ctrl.count = 0;
 
+    $scope.$watchCollection('$ctrl.config', function (newValue, oldValue) {
+        switch ($ctrl.config.size) {
+            case 1:
+                $ctrl.sizeStar = "";
+                break;
+            case 2:
+                $ctrl.sizeStar = "fa-2x";
+                break;
+            case 3:
+                $ctrl.sizeStar = "fa-3x";
+                break;
+            case 4:
+                $ctrl.sizeStar = "fa-4x";
+                break;
+            case 5:
+                $ctrl.sizeStar = "fa-5x";
+                break;
+        }
+    });
     $scope.$watch('$ctrl.value', function (newValue, oldValue) {
+        console.log($ctrl.value);
         if ($ctrl.value !== null && $ctrl.value !== undefined && $ctrl.value !== "") {
             $ctrl.stars();
         } else {
@@ -19,8 +39,9 @@ function starsCtrl($scope, $timeout) {
             for (var i = 0; i < 5; i++) {
                 $ctrl.estrella.push("fa-star-o");
             }
+            $ctrl.value = 0;
+//            $ctrl.config.response = $ctrl.value;
         }
-        $ctrl.config.response = $ctrl.value;
     });
 
     $ctrl.selectStar = function (number) {
@@ -28,17 +49,18 @@ function starsCtrl($scope, $timeout) {
         if ($ctrl.config.type === "input") {
             $timeout(function () {
                 if ($ctrl.count === 1) {
-                    numberStar(number);
+                    $ctrl.numberStar(number);
                     $ctrl.count = 0;
                 } else {
                     if ($ctrl.config.decimal === true) {
                         $ctrl.count = 0;
                         $ctrl.value = (number - 1) + 1.5;
                         $ctrl.stars();
+                    } else {
+                        $ctrl.count = 0;
                     }
                 }
             }, 400);
-        } else {// type = show
         }
     };
     if ($ctrl.config === null || $ctrl.config === undefined || $ctrl.config === null) {
@@ -46,10 +68,10 @@ function starsCtrl($scope, $timeout) {
         $ctrl.config.color = 'rgb(56, 126, 245)';
         $ctrl.config.type = "show";
         $ctrl.config.size = 2;
-        $ctrl.config.response = 0;
+//        $ctrl.config.response = 0;
     }
 
-    var numberStar = function (number) {
+    $ctrl.numberStar = function (number) {
         for (var h = 0; h < $ctrl.estrella.length; h++) {
             if (h <= number) {
                 $ctrl.estrella[h] = "fa-star";
@@ -57,7 +79,7 @@ function starsCtrl($scope, $timeout) {
                 $ctrl.estrella[h] = "fa-star-o";
             }
         }
-        $ctrl.config.response = number + 1;
+        $ctrl.value = number + 1;
     };
 
     $ctrl.stars = function () {
@@ -72,9 +94,9 @@ function starsCtrl($scope, $timeout) {
                 $ctrl.estrella.push("fa-star-o");
             }
         } else {
-            $ctrl.value = String($ctrl.value);
+            var number = String($ctrl.value);
 //        console.log("Es un numero decimal");
-            var sp = $ctrl.value.split(".");
+            var sp = number.split(".");
             sp[0] = parseInt(sp[0], 10);
             for (var e = 0; e < sp[0]; e++) {
                 $ctrl.estrella.push("fa-star");
@@ -86,26 +108,8 @@ function starsCtrl($scope, $timeout) {
                 $ctrl.estrella.push("fa-star-o");
             }
         }
-        $ctrl.config.response = $ctrl.value;
+//        $ctrl.config.response = $ctrl.value;
     };
-
-    switch ($ctrl.config.size) {
-        case 1:
-            $ctrl.sizeStar = "";
-            break;
-        case 2:
-            $ctrl.sizeStar = "fa-2x";
-            break;
-        case 3:
-            $ctrl.sizeStar = "fa-3x";
-            break;
-        case 4:
-            $ctrl.sizeStar = "fa-4x";
-            break;
-        case 5:
-            $ctrl.sizeStar = "fa-5x";
-            break;
-    }
 
 }
 ;

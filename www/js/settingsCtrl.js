@@ -20,14 +20,6 @@ angular.module('app.controllers')
                 response: []
             };
             
-            $scope.configStars= {
-                type: "input",//type: input or show
-                size: 3, //size: 1,2,3,4,5.
-                color: '#387ef5' //the code of the color, the default result is black
-//              response: is the result of the select star
-            };
-            $scope.valueStars=2.5;
-            
             $scope.deleteItem = function (number) {
                 $scope.configlocation.list.splice(number, 1);
             };

@@ -153,7 +153,7 @@ angular.module('app.controllers', [])
                     $cordovaBarcodeScanner
                             .scan()
                             .then(function (barcodeData) {
-                                $scope.url=barcodeData.text;
+                                $scope.url = barcodeData.text;
                                 alert(JSON.stringify(barcodeData));
                                 $scope.inAppBrowser();
                             }, function (error) {
@@ -299,6 +299,21 @@ angular.module('app.controllers', [])
                 $timeout(function () {
                     $scope.closeLogin();
                 }, 1000);
+            };
+            
+            $scope.languages=[
+                {name:"English", img: "../img/usa.png", text:"Hello, my name is..."},
+                {name:"Españo", img: "../img/spain.png", text:"Hola, mi nombre es..."},
+                {name:"Portuguess", img: "../img/br.png", text:"Hello, my name is..."}
+            ];
+
+            $scope.openLanguage = function () {
+                $ionicPopover.fromTemplateUrl('languages-popover.html', {
+                    scope: $scope
+                }).then(function (popover) {
+                    $scope.popover = popover;
+                    $scope.openPopover();
+                });
             };
 
 

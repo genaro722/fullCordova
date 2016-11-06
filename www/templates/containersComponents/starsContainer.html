@@ -1,0 +1,52 @@
+<ion-view view-title="My Stars">
+    <ion-content style="background: #cecece">
+        <ion-scroll>
+            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
+                >Stars: {{myValue}}</h4>
+            <my-stars config="configStars" value="myValue"></my-stars>
+            <ion-list>
+                <ion-item>
+                    <ion-radio ng-model="configStars.type" ng-value="'input'">type input (<small>it work like input</small>)</ion-radio>
+                    <ion-radio ng-model="configStars.type" ng-value="'show'">type show (<small>only for show results</small>)</ion-radio>
+                </ion-item>
+                <ion-item style="padding: 0px">
+                    <div class="row">
+                        <div class="col col-50">
+                            <label class="item-input item-stacked-label">
+                                <span class="input-label">Initial Value</span>
+                                <input type="number" ng-model="myValue" ng-change="log(myValue)">
+                                <small class="text-danger" ng-show="myValue > 5">The max value is 5</small>
+                                <small class="text-danger" ng-show="configStars.decimal===false && (myValue%1)!==0">Only Interger numbers</small>
+                            </label>
+                        </div>
+                        <div class="col col-50">
+                            <label class="item-input item-stacked-label">
+                                <span class="input-label">Size Stars</span>
+                                <input type="number" ng-model="configStars.size">
+                                <small class="text-danger" ng-show="configStars.size > 5">The max size is 5</small><br>
+                                <small class="text-danger" ng-show="(configStars.size%1)!==0">Only Interger numbers</small>
+                            </label>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <div class="item-toggle">
+                        <span>Select Decimal Numbers?</span>
+                        <label class="toggle toggle-calm my-toggle">
+                            <input type="checkbox" ng-model="configStars.decimal" class="btn-green">
+                            <div class="track">
+                                <div class="handle"></div>
+                            </div>
+                        </label>
+                    </div>
+                </ion-item>
+                <ion-item>
+                    <label class="item-input item-stacked-label">
+                        <span class="input-label">Color</span>
+                        <input type="color" placeholder="#000" ng-model="configStars.color">
+                    </label>
+                </ion-item>
+            </ion-list>
+        </ion-scroll>
+    </ion-content>
+</ion-view>
