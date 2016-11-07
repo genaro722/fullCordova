@@ -14,7 +14,7 @@
                         <div class="col col-50">
                             <label class="item-input item-stacked-label">
                                 <span class="input-label">Initial Value</span>
-                                <input type="number" ng-model="myValue" ng-change="log(myValue)">
+                                <input type="number" ng-model="myValue" ng-change="log(myValue)" class="input-blue white-text">
                                 <small class="text-danger" ng-show="myValue > 5">The max value is 5</small>
                                 <small class="text-danger" ng-show="configStars.decimal===false && (myValue%1)!==0">Only Interger numbers</small>
                             </label>
@@ -22,7 +22,7 @@
                         <div class="col col-50">
                             <label class="item-input item-stacked-label">
                                 <span class="input-label">Size Stars</span>
-                                <input type="number" ng-model="configStars.size">
+                                <input type="number" ng-model="configStars.size" class="input-blue white-text">
                                 <small class="text-danger" ng-show="configStars.size > 5">The max size is 5</small><br>
                                 <small class="text-danger" ng-show="(configStars.size%1)!==0">Only Interger numbers</small>
                             </label>

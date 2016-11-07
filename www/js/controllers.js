@@ -1,11 +1,14 @@
 angular.module('app.controllers', [])
 
         .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading,
-                $cordovaFlashlight, $cordovaDeviceOrientation, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
+                $cordovaFlashlight, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
                 $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice, $cordovaGeolocation,
-                $cordovaMedia, $cordovaInAppBrowser, $rootScope) {
+                $cordovaMedia, $cordovaInAppBrowser, $rootScope, $cordovaDeviceOrientation, myConfiguration) {
 //            var $ctrl = this;
+
+            $scope.myLenguage = myConfiguration.getLanguage();
             $scope.loadingLocation = false;
+            $scope.result = null;
             $scope.dialogo = function () {
                 alert("hola");
             };
@@ -99,13 +102,7 @@ angular.module('app.controllers', [])
                                         console.log(image);
                                         console.log(image.src);
                                         $scope.galleryPrincipal = image.src;
-
-                                        $ionicModal.fromTemplateUrl('templates/modals/images.html', {
-                                            scope: $scope
-                                        }).then(function (modal) {
-                                            $scope.modal = modal;
-                                            $scope.modal.show();
-                                        });
+                                        $scope.modalPhotos();
                                     }, function (err) {
                                 alert(err);
                                 // error
@@ -113,6 +110,47 @@ angular.module('app.controllers', [])
 //                    $cordovaCamera.cleanup().then(...); // only for FILE_URI
 
                 }, false);
+            };
+
+
+            $scope.gallery = function () {
+                $scope.galleryPrincipal = "";
+                $scope.arrayGallery = [];
+                var row = [];
+                var options = {
+                    maximumImagesCount: 10,
+                    width: 800,
+                    height: 800,
+                    quality: 80
+                };
+                $cordovaImagePicker.getPictures(options)
+                        .then(function (results) {
+                            alert(results);
+                            for (var i = 0; i < results.length; i++) {
+                                if (row.lenth < 2) {
+                                    row.push(results[i]);
+                                }
+                                if (row.lenth === 2) {
+                                    $scope.arrayGallery.push(row);
+                                    $scope.arrayGallery = [];
+                                }
+                            }
+                            $scope.modalPhotos();
+                        }, function (error) {
+                            alert(error);
+                            // error getting photos
+                        });
+            };
+
+            $scope.modalPhotos = function () {
+                $ionicModal.fromTemplateUrl('templates/modals/images.html', {
+                    scope: $scope
+                }).then(function (modal) {
+                    $scope.modal = modal;
+                    $scope.modal.show();
+                }, function (error) {
+                    console.log(error);
+                });
             };
 
             $scope.capture = function () {
@@ -130,16 +168,20 @@ angular.module('app.controllers', [])
 
                 $cordovaCapture.captureAudio(options).then(function (audioData) {
                     alert(JSON.stringify(audioData));
-                    $scope.play(audioData);
+                    $scope.play(audioData.localURL);
                     // Success! Audio data is here
                 }, function (err) {
                     // An error occurred. Show a message to the user
                 });
             };
+
             $scope.play = function (src) {
-                var media = new Media(src, null, null, mediaStatusCallback);
-                $cordovaMedia.play(media);
+//                var media = new Media(src, null, null, mediaStatusCallback);
+//                $cordovaMedia.play(media);
+                var media = $cordovaMedia.newMedia(src);
+                media.play();
             };
+
             var mediaStatusCallback = function (status) {
                 if (status == Media.MEDIA_STARTING) {
                     $ionicLoading.show({template: "Loading..."});
@@ -162,26 +204,22 @@ angular.module('app.controllers', [])
                             });
                 }, false);
             };
-            $scope.inAppBrowser = function () {
 
+            $scope.inAppBrowser = function () {
                 var options = {
                     location: 'yes',
                     clearcache: 'yes',
                     toolbar: 'no'
                 };
-
                 document.addEventListener("deviceready", function () {
                     $cordovaInAppBrowser.open($scope.url, '_blank', options)
                             .then(function (event) {
-                                // success
+                                alert(event);
                             })
                             .catch(function (event) {
-                                // error
+                                alert(event);
                             });
-
-
-                    $cordovaInAppBrowser.close();
-
+//                    $cordovaInAppBrowser.close();
                 }, false);
             };
 
@@ -197,41 +235,6 @@ angular.module('app.controllers', [])
                                 // An error occurred
                             });
                 }, false);
-            };
-
-            $scope.gallery = function () {
-                $scope.galleryPrincipal = "";
-                $scope.arrayGallery = [];
-                var row = [];
-                var options = {
-                    maximumImagesCount: 10,
-                    width: 800,
-                    height: 800,
-                    quality: 80
-                };
-                $cordovaImagePicker.getPictures(options)
-                        .then(function (results) {
-                            for (var i = 0; i < results.length; i++) {
-                                if (row.lenth < 2) {
-                                    row.push(results[i]);
-                                }
-                                if (row.lenth === 2) {
-                                    $scope.arrayGallery.push(row);
-                                    $scope.arrayGallery = [];
-                                }
-                            }
-                            $ionicModal.fromTemplateUrl('templates/modals/images.html', {
-                                scope: $scope
-                            }).then(function (modal) {
-                                $scope.modal = modal;
-                                $scope.modal.show();
-                            }, function (error) {
-                                console.log(error);
-                            });
-                        }, function (error) {
-                            alert(error);
-                            // error getting photos
-                        });
             };
 
             $scope.system = function () {
@@ -255,7 +258,7 @@ angular.module('app.controllers', [])
                 $scope.platform = $cordovaDevice.getPlatform();
                 $scope.uuid = $cordovaDevice.getUUID();
                 $scope.version2 = $cordovaDevice.getVersion();
-                $ionicModal.fromTemplateUrl('templates/modals/sistemInfo.html', {
+                $ionicModal.fromTemplateUrl('templates/modals/systemInfo.html', {
                     scope: $scope
                 }).then(function (modal) {
                     $scope.modal = modal;
@@ -293,18 +296,17 @@ angular.module('app.controllers', [])
             // Perform the login action when the user submits the login form
             $scope.doLogin = function () {
                 console.log('Doing login', $scope.loginData);
-
                 // Simulate a login delay. Remove this and replace with your login
                 // code if using a login system
                 $timeout(function () {
                     $scope.closeLogin();
                 }, 1000);
             };
-            $scope.myLenguage = "../img/usa.png";
+
             $scope.languages = [
-                {name: "English", img: "../img/usa.png", text: "Hello, my name is CHARAWATO"},
-                {name: "Español", img: "../img/spain.png", text: "Hola, mi nombre es CHARAWATO"},
-                {name: "Portuguess", img: "../img/br.png", text: "Oi, meu nome é CHARAWATO"}
+                {name: "English", img: "img/usa.png", text: "Hello, my name is CHARAWATO"},
+                {name: "Español", img: "img/spain.png", text: "Hola, mi nombre es CHARAWATO"},
+                {name: "Portuguess", img: "img/br.png", text: "Oi, meu nome é CHARAWATO"}
             ];
 
             $scope.openLanguage = function () {
@@ -318,6 +320,7 @@ angular.module('app.controllers', [])
 
             $scope.selectLenguage = function (item) {
                 $scope.myLenguage = item.img;
+                myConfiguration.setLanguage(item.img);
                 $scope.closePopover();
             };
 

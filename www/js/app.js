@@ -11,6 +11,7 @@ angular.module('app',
             'ionMdInput',
             'app.route',
             'app.components',
+            'app.services',
         'ngCordova'])
 
         .run(function ($ionicPlatform) {

@@ -26,9 +26,9 @@
             </button>
         </div>
         <div class="row">
-            <button class="col col-50 home-container text-center battery-color"
+            <button class="col col-50 home-container text-center battery-color" ng-disabled="result===null"
                  ng-click="battery()">
-                <i class="fa fa-battery fa-3x white-text"></i>
+                <i class="fa fa-3x white-text" ng-class="{'fa-battery':result!==null, 'fa-spinner fa-spin':result===null}"></i>
                 <p class="white-text">Battery Status</p>
             </button>
             <button class="col col-50 home-container text-center android-color"

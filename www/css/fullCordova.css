@@ -1,4 +1,7 @@
-body {
+/* {
+    font-family: 'Itim', cursive !important;
+}*/
+.font-init{
     font-family: 'Itim', cursive !important;
 }
 .home-container{
