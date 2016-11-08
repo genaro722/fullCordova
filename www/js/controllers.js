@@ -86,7 +86,8 @@ angular.module('app.controllers', [])
                 document.addEventListener("deviceready", function () {
 
                     var options = {
-                        destinationType: Camera.DestinationType.FILE_URI,
+//                        destinationType: Camera.DestinationType.FILE_URI,
+                        destinationType: Camera.DestinationType.DATA_URL,
                         sourceType: Camera.PictureSourceType.CAMERA,
                         saveToPhotoAlbum: false,
                         encodingType: Camera.EncodingType.JPEG
@@ -99,8 +100,7 @@ angular.module('app.controllers', [])
                                         image.src = imageURI;
                                         alert(image.src);
                                         alert(imageURI);
-                                        console.log(image);
-                                        console.log(image.src);
+                                        alert(image);
                                         $scope.galleryPrincipal = image.src;
                                         $scope.modalPhotos();
                                     }, function (err) {
@@ -121,14 +121,14 @@ angular.module('app.controllers', [])
                     maximumImagesCount: 10,
                     width: 800,
                     height: 800,
-                    quality: 80
+                    quality: 100
                 };
                 $cordovaImagePicker.getPictures(options)
                         .then(function (results) {
                             alert(results);
                             for (var i = 0; i < results.length; i++) {
                                 if (row.lenth < 2) {
-                                    row.push(results[i]);
+                                    row.push(results[i].file);
                                 }
                                 if (row.lenth === 2) {
                                     $scope.arrayGallery.push(row);
@@ -154,13 +154,14 @@ angular.module('app.controllers', [])
             };
 
             $scope.capture = function () {
-                var options = {limit: 3};
-
-                $cordovaCapture.captureImage(options).then(function (imageData) {
-                    // Success! Image data is here
-                }, function (err) {
-                    // An error occurred. Show a message to the user
-                });
+                alert("NOT WORK");
+//                var options = {limit: 3};
+//
+//                $cordovaCapture.captureImage(options).then(function (imageData) {
+//                    // Success! Image data is here
+//                }, function (err) {
+//                    // An error occurred. Show a message to the user
+//                });
             };
 
             $scope.voice = function () {
@@ -176,10 +177,10 @@ angular.module('app.controllers', [])
             };
 
             $scope.play = function (src) {
-//                var media = new Media(src, null, null, mediaStatusCallback);
-//                $cordovaMedia.play(media);
-                var media = $cordovaMedia.newMedia(src);
-                media.play();
+                var media = new Media(src, null, null, mediaStatusCallback);
+                $cordovaMedia.play(media);
+//                var media = $cordovaMedia.newMedia(src);
+//                media.play();
             };
 
             var mediaStatusCallback = function (status) {
@@ -214,7 +215,7 @@ angular.module('app.controllers', [])
                 document.addEventListener("deviceready", function () {
                     $cordovaInAppBrowser.open($scope.url, '_blank', options)
                             .then(function (event) {
-                                alert(event);
+                                alert(JSON.stringify(event));
                             })
                             .catch(function (event) {
                                 alert(event);
@@ -225,16 +226,17 @@ angular.module('app.controllers', [])
 
 
             $scope.encode = function () {
-                document.addEventListener("deviceready", function () {
-                    $cordovaBarcodeScanner
-                            .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.youtube.com")
-                            .then(function (success) {
-                                $scope.message(success);
-                            }, function (error) {
-                                alert(error);
-                                // An error occurred
-                            });
-                }, false);
+                alert("Not Work");
+//                document.addEventListener("deviceready", function () {
+//                    $cordovaBarcodeScanner
+//                            .encode(BarcodeScanner.Encode.TEXT_TYPE, "http://www.youtube.com")
+//                            .then(function (success) {
+//                                alert(success);
+//                            }, function (error) {
+//                                alert(error);
+//                                // An error occurred
+//                            });
+//                }, false);
             };
 
             $scope.system = function () {
