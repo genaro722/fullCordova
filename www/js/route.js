@@ -47,5 +47,14 @@ angular.module('app.route', [])
                             }
                         }
                     })
+                    .state('app.contactUs', {
+                        url: '/contactUs',
+                        views: {
+                            'menuContent': {
+                                templateUrl: 'templates/contactUs.html',
+                                controller: 'contactUsCtrl'
+                            }
+                        }
+                    })
                     ;
         });

@@ -1,12 +1,13 @@
 angular.module('app.controllers', [])
 
-        .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading,
-                $cordovaFlashlight, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera,
+        .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $ionicPopover, $ionicLoading, $ionicPlatform,
+                $cordovaFlashlight, $cordovaVibration, $cordovaBatteryStatus, $cordovaCamera, $cordovaLocalNotification,
                 $cordovaCapture, $cordovaBarcodeScanner, $cordovaImagePicker, $cordovaAppVersion, $cordovaDevice, $cordovaGeolocation,
                 $cordovaMedia, $cordovaInAppBrowser, $rootScope, $cordovaDeviceOrientation, myConfiguration) {
 //            var $ctrl = this;
 
             $scope.myLenguage = myConfiguration.getLanguage();
+            $scope.config = JSON.parse(myConfiguration.getConfig());
             $scope.loadingLocation = false;
             $scope.result = null;
             $scope.dialogo = function () {
@@ -21,6 +22,15 @@ angular.module('app.controllers', [])
                 $timeout(function () {
                     $ionicLoading.hide();
                 }, 2000);
+            };
+
+            $scope.viewImage = function (img) {
+                var image = "<img src='" + img + "'> <br> <h2>Full Cordova</h2>";
+                $ionicLoading.show({template: image, duration: 3000});
+            };
+            $scope.closeImage = function () {
+                console.log("CLOSE");
+                $ionicLoading.hide();
             };
 
             $scope.doFlash = function () {
@@ -58,10 +68,26 @@ angular.module('app.controllers', [])
 
             $scope.doOrientation = function () {
                 $scope.orientation = !$scope.orientation;
+                $ionicPlatform.ready(function () {
+                    $scope.scheduleDelayedNotification = function () {
+                        var now = new Date().getTime();
+                        var _10SecondsFromNow = new Date(now + 10 * 1000);
+
+                        $cordovaLocalNotification.schedule({
+                            id: 1,
+                            title: 'Title here',
+                            text: 'Text here',
+                            at: _10SecondsFromNow
+                        }).then(function (result) {
+                            alert(result);
+                            // ...
+                        });
+                    };
+                });
             };
 
             $scope.vibration = function () {
-                $cordovaVibration.vibrate(5000);
+                $cordovaVibration.vibrate($scope.config[3]);
             };
 
 
@@ -89,7 +115,8 @@ angular.module('app.controllers', [])
 //                        destinationType: Camera.DestinationType.FILE_URI,
                         destinationType: Camera.DestinationType.DATA_URL,
                         sourceType: Camera.PictureSourceType.CAMERA,
-                        saveToPhotoAlbum: false,
+                        saveToPhotoAlbum: $scope.config[0],
+                        allowEdit: $scope.config[1],
                         encodingType: Camera.EncodingType.JPEG
                     };
 
@@ -118,7 +145,7 @@ angular.module('app.controllers', [])
                 $scope.arrayGallery = [];
                 var row = [];
                 var options = {
-                    maximumImagesCount: 10,
+                    maximumImagesCount: $scope.config[2],
                     width: 800,
                     height: 800,
                     quality: 100
@@ -165,7 +192,7 @@ angular.module('app.controllers', [])
             };
 
             $scope.voice = function () {
-                var options = {limit: 1, duration: 30};
+                var options = {limit: 1, duration: $scope.config[4]};
 
                 $cordovaCapture.captureAudio(options).then(function (audioData) {
                     alert(JSON.stringify(audioData));

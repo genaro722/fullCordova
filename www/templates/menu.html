@@ -22,7 +22,8 @@
     <ion-side-menu side="left">
         <ion-header-bar class="dark-bg expanded">
             <!--<span class="avatar" style="background: url('img/tools.png'); background-size: cover;"  ui-sref="app.home"></span>-->
-            <span class="avatar" style="background: url('img/tools.png'); background-size: cover;"></span>
+            <span class="avatar" style="background: url('img/tools.png'); background-size: cover;"
+                  ng-click="viewImage('img/tools.png')"></span>
             <h2 class="name">Full Cordova</h2>
             <button class="button button-clear button-light" style="position: absolute;right: 5%;top: 10%;">
                 <i class="fa fa-gear"></i>
@@ -42,7 +43,7 @@
                 <ion-item menu-close href="#/app/settings">
                     <i class="fa fa-gears margin-right-5"></i>Settings
                 </ion-item>
-                <ion-item menu-close class="white-text text-center" style="background-color: #33cd5f !important">
+                <ion-item menu-close class="white-text text-center" style="background-color: #33cd5f !important" ui-sref="app.contactUs">
                     <i class="fa fa-envelope margin-right-5"></i>Contact Us
                 </ion-item>
             </ion-list>

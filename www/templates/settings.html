@@ -1,9 +1,10 @@
 <ion-view view-title="Settings">
-    <ion-content style="background: #cecece">
-        <ion-tabs class="tabs-calm tabs-icon-top">
+    <ion-content style="background: white">
+        <!--<ion-tabs class="tabs-calm tabs-icon-top">-->
 
-            <ion-tab title="Home" icon-on="ion-home" icon-off="ion-ios-home-outline">
-                <div class="list has-header" style="max-height: 95%">
+            <!--<ion-tab title="Home" icon-on="ion-home" icon-off="ion-ios-home-outline">-->
+                <!--<div class="list has-header" style="max-height: 95%">-->
+                <div class="list" style="max-height: 95%">
                     <ion-scroll style="max-height: 85%">
                         <div class="item item-divider font-18">
                             Camera
@@ -11,7 +12,7 @@
                         <div class="item  item-toggle">
                             <span>Do you want save the Photos?</span>
                             <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="savePhoto" class="btn-green">
+                                <input type="checkbox" ng-model="config[0]" class="btn-green">
                                 <div class="track">
                                     <div class="handle"></div>
                                 </div>
@@ -20,7 +21,7 @@
                         <div class="item  item-toggle">
                             <span>Do you want edit the Photos?</span>
                             <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="editPhoto" class="btn-green">
+                                <input type="checkbox" ng-model="config[1]" class="btn-green">
                                 <div class="track">
                                     <div class="handle"></div>
                                 </div>
@@ -29,64 +30,64 @@
                         <div class="item item-divider font-18">
                             Gallery
                         </div>
-                        <div class="item  item-toggle">
+<!--                        <div class="item  item-toggle">
                             <span>Do you want select multiple Photos?</span>
                             <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="multiplePhotos" class="btn-green">
+                                <input type="checkbox" ng-model="config[2]>1" class="btn-green">
                                 <div class="track">
                                     <div class="handle"></div>
                                 </div>
                             </label>
-                        </div>
+                        </div>-->
                         <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">How many photos (1 - 10)</span>
-                            <input type="number" placeholder="How many photos?" min="1" max="10" 
-                                   ng-model="manyPhotos">
+                            <span class="input-label font-16 font-bold" style="min-width: 100%;">How many photos do you want select? (1 - 10)</span>
+                            <input type="number" placeholder="How many photos?" min="1" max="10"
+                                   ng-model="config[2]">
                         </label>
                         <div class="item item-divider font-18">
                             Vibration
                         </div>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label font-16 font-bold" style="min-width: 100%;">Duration (seg)</span>
-                            <input type="number" placeholder="duration" min="1" max="10" 
-                                   ng-model="vibrationDuration">
+                            <input type="number" placeholder="duration" min="1" max="10000" 
+                                   ng-model="config[3]">
                         </label>
                         <div class="item item-divider font-18">
-                            Audio
+                            Voice
                         </div>
-                        <label class="item item-input item-stacked-label">
+<!--                        <label class="item item-input item-stacked-label">
                             <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
                             <input type="number" placeholder="duration" min="1" max="10" 
                                    ng-model="audioLimit">
-                        </label>
+                        </label>-->
                         <label class="item item-input item-stacked-label">
                             <span class="input-label font-16 font-bold" style="min-width: 100%;">Duration (seg)</span>
-                            <input type="number" placeholder="duration" min="1" max="10" 
-                                   ng-model="audioDuration">
+                            <input type="number" placeholder="duration" min="1" max="10000" 
+                                   ng-model="config[4]">
                         </label>
-                        <div class="item item-divider font-18">
+<!--                        <div class="item item-divider font-18">
                             Capture
                         </div>
                         <label class="item item-input item-stacked-label">
                             <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
                             <input type="number" placeholder="duration" min="1" max="10" 
                                    ng-model="captureLimit">
-                        </label>
+                        </label>-->
                     </ion-scroll>
                     <div class="row">
                         <div class="col col-50">
-                            <buttom  class="button button-dark" style="min-width:100%">
+                            <buttom  class="button button-dark" style="min-width:100%" ng-click="makeDefault()">
                                 Default
                             </buttom>
                         </div>
                         <div class="col col-50">
-                            <buttom  class="button button-calm" style="min-width:100%">
+                            <buttom  class="button button-calm" style="min-width:100%" ng-click="saveConfig()">
                                 <i class="fa fa-send-o"></i> Save
                             </buttom>
                         </div>
                     </div>
                 </div>
-            </ion-tab>
+            <!--</ion-tab>-->
 
             <!--            <ion-tab title="Components" icon-on="ion-ios-pie" icon-off="ion-ios-pie-outline">
                             <div class="list has-header">
@@ -139,7 +140,7 @@
             <!-- Tab 3 content -->
             <!--</ion-tab>-->
 
-        </ion-tabs>
+        <!--</ion-tabs>-->
     </ion-content>
     <!--                <div class="bar bar-footer bar-balanced">
                         <div class="title"> TEAM CHARAWATO</div>

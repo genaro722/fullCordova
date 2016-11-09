@@ -20,15 +20,17 @@
             </button>
             <button class="col col-50 home-container text-center default-color"
                  ng-click="doOrientation()">
-                <i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>
-                <i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>
-                <p class="white-text">Orientation</p>
+                <!--<i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>-->
+                <!--<i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>-->
+                <i class="fa fa-comments-o fa-3x white-text"></i>
+                <p class="white-text">Local Notification</p>
             </button>
         </div>
         <div class="row">
             <button class="col col-50 home-container text-center battery-color" ng-disabled="result===null"
                  ng-click="battery()">
-                <i class="fa fa-3x white-text" ng-class="{'fa-battery':result!==null, 'fa-spinner fa-spin':result===null}"></i>
+                <i class="fa fa-3x white-text" ng-class="{'fa-battery':result>75 , 'fa-battery-three-quarters':result<=75 && result>60,'fa-battery-half':result<=60 && result>30,
+                            'fa-battery-quarter':result<=30 && result>10,'fa-battery-empty':result<=10 && result!==null ,'fa-spinner fa-spin':result===null}"></i>
                 <p class="white-text">Battery Status</p>
             </button>
             <button class="col col-50 home-container text-center android-color"
@@ -38,7 +40,7 @@
             </button>
         </div>
     </ion-content>
-        <div class="bar bar-footer bar-balanced">
+        <div class="bar bar-footer bar-balanced" ui-sref="app.contactUs">
             <div class="title"> TEAM CHARAWATO</div>
         </div>
 </ion-view>
