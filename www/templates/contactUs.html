@@ -1,5 +1,26 @@
-<ion-view view-title="Contact Us">
-    <ion-content style="background: #cecece">
-        
+<ion-view view-title="Contact Us" cache-view="false">
+    <ion-content style="background: url({{images[aleatorio].img}}); background-color: #cecece;
+                 background-size: cover; padding-right: 20px">
+        <form ng-submit="sendEmail()">
+            <div class="row">
+                <div class="col">
+                    <label class="item-input item-stacked-label">
+                        <span class="input-label" ng-class="{'white-text':images[aleatorio].white}">Your Email</span>
+                        <input type="email" ng-model="email" placeholder="example: xxxxx@xxxx.com" style="padding-left: 10px">
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="item-input item-stacked-label">
+                        <span class="input-label" ng-class="{'white-text':images[aleatorio].white}">Your Mesage</span>
+                        <textarea placeholder="mesage" ng-model="mensaje" rows="8" style="padding-left: 10px"></textarea>
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="button button-calm button-raised pull-right margin-right-10"> 
+                <i class="fa fa-envelope margin-right-5"></i>Send
+            </button>
+        </form>
     </ion-content>
 </ion-view>
