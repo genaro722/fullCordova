@@ -65,7 +65,7 @@
     </ion-popover-view>
 </script>
 <script id="options-popover.html" type="text/ng-template">
-    <ion-popover-view style="position:relative; top: 40px; left:74%; height:300px">
+    <ion-popover-view style="position:absolute; top: 40px; left:74%; height:300px">
     <ion-content>
     <li class="item" ng-click="camera()">
     <i class="fa fa-camera"></i> Camera
@@ -79,13 +79,14 @@
     <li class="item" ng-click="scanner()">
     <i class="ion ion-search"></i>Scanner
     </li>
-    <li class="item" ng-click="encode()">
-    <i class="ion ion-search"></i> <s>Encode</s>
-    </li>
-    <li class="item" ng-click="capture()">
-    <i class="ion ion-qr-scanner"></i> <s>Capture</s>
-    </li>
     </ul>
     </ion-content>
     </ion-popover-view>
 </script>
+
+<!--    <li class="item" ng-click="encode()">
+    <i class="ion ion-search"></i> <s>Encode</s>
+    </li>
+    <li class="item" ng-click="capture()">
+    <i class="ion ion-qr-scanner"></i> <s>Capture</s>
+    </li>-->

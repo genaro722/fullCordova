@@ -66,8 +66,8 @@ angular.module('app.controllers', [])
                         });
             };
 
-            $scope.doOrientation = function () {
-                $scope.orientation = !$scope.orientation;
+            $scope.localNotification = function () {
+//                $scope.orientation = !$scope.orientation;
                 $ionicPlatform.ready(function () {
                     $scope.scheduleDelayedNotification = function () {
                         var now = new Date().getTime();
@@ -111,8 +111,8 @@ angular.module('app.controllers', [])
                 $scope.closePopover();
                 document.addEventListener("deviceready", function () {
 
-                    var options = {
 //                        destinationType: Camera.DestinationType.FILE_URI,
+                    var options = {
                         destinationType: Camera.DestinationType.DATA_URL,
                         sourceType: Camera.PictureSourceType.CAMERA,
                         saveToPhotoAlbum: $scope.config[0],

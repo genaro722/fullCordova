@@ -1,4 +1,4 @@
-<ion-view view-title="Home">
+<ion-view view-title="Home" cache-view="false">
     <ion-content style="background: #cecece">
         <div class="row">
             <button class="col col-50 home-container text-center" ng-class="{'flash-color-o':!flash,'flash-color':flash}"
@@ -19,7 +19,7 @@
                 <p class="white-text">Vibrate</p>
             </button>
             <button class="col col-50 home-container text-center default-color"
-                 ng-click="doOrientation()">
+                 ng-click="localNotification()">
                 <!--<i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>-->
                 <!--<i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>-->
                 <i class="fa fa-comments-o fa-3x white-text"></i>
@@ -27,10 +27,10 @@
             </button>
         </div>
         <div class="row">
-            <button class="col col-50 home-container text-center battery-color" ng-disabled="result===null"
+            <button class="col col-50 home-container text-center battery-color" ng-disabled="result.level===null"
                  ng-click="battery()">
-                <i class="fa fa-3x white-text" ng-class="{'fa-battery':result>75 , 'fa-battery-three-quarters':result<=75 && result>60,'fa-battery-half':result<=60 && result>30,
-                            'fa-battery-quarter':result<=30 && result>10,'fa-battery-empty':result<=10 && result!==null ,'fa-spinner fa-spin':result===null}"></i>
+                <i class="fa fa-3x white-text" ng-class="{'fa-battery':result.level>75 , 'fa-battery-three-quarters':result.level<=75 && result.level>60,'fa-battery-half':result.level<=60 && result.level>30,
+                            'fa-battery-quarter':result.level<=30 && result.level>10,'fa-battery-empty':result.level<=10 && result.level!==null ,'fa-spinner fa-spin':result.level===null}"></i>
                 <p class="white-text">Battery Status</p>
             </button>
             <button class="col col-50 home-container text-center android-color"
