@@ -52,7 +52,7 @@ angular.module('app.route', [])
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/contactUs.html',
-                                controller: 'contactUsCtrl'
+                                controller: 'contactUsCtrl as ctrl'
                             }
                         }
                     })

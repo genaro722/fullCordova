@@ -2,13 +2,15 @@ angular.module('app.controllers')
 
         .controller('contactUsCtrl', function ($scope, myConfiguration, $cordovaEmailComposer, $ionicLoading) {
 
-            $scope.email = "";
-            $scope.mensaje = "";
-            $scope.message = function (mes) {
+            var ctrl = this;
+
+            ctrl.email = "";
+            ctrl.mensaje = "";
+            ctrl.message = function (mes) {
                 $ionicLoading.show({template: mes, duration: 2000});
             };
 
-            $scope.images = [
+            ctrl.images = [
                 {img: "http://i3.wallpaperscraft.com/image/app_storm_apple_mac_blue_symbol_8281_480x800.jpg", white: true},
                 {img: "https://academy413.files.wordpress.com/2014/06/bg1-copy.jpg", white: true},
                 {img: "http://www.creatingiphone.com/uploads/soft/iPhone%20Wallpaper/Background/Best%20background%20app%20for%20iphone.jpg", white: true},
@@ -22,14 +24,14 @@ angular.module('app.controllers')
                 {img: "https://s-media-cache-ak0.pinimg.com/564x/f8/8b/08/f88b0883dff8102259b8440219c3423b.jpg", white: true},
                 {img: "http://previews.123rf.com/images/narutotootee/narutotootee1206/narutotootee120600179/14247295-Abstract-blue-and-white-triangle-background--Stock-Photo.jpg", white: true}
             ];
-            $scope.aleatorio=Math.round(Math.random()*5);
-            console.log($scope.aleatorio);
+            ctrl.aleatorio=Math.round(Math.random()*5);
+            console.log(ctrl.aleatorio);
 
-            $scope.sendEmail = function () {
+            ctrl.sendEmail = function () {
                 console.log("COMIENZO");
-                console.log($scope.mensaje);
-                console.log($scope.email);
-                if ($scope.mensaje !== "" && $scope.mensaje !== null && $scope.mensaje !== undefined && $scope.email !== "" && $scope.email !== null && $scope.email !== undefined) {
+                console.log(ctrl.mensaje);
+                console.log(ctrl.email);
+                if (ctrl.mensaje !== "" && ctrl.mensaje !== null && ctrl.mensaje !== undefined && ctrl.email !== "" && ctrl.email !== null && ctrl.email !== undefined) {
                     $cordovaEmailComposer.isAvailable().then(function () {
                         alert("EMAIL AVAILABLE");
                         var email = {
@@ -44,8 +46,8 @@ angular.module('app.controllers')
 //                        'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
 //                        'file://README.pdf'
 //                    ],
-                            subject: 'From Full Cordova APP: ' + $scope.email,
-                            body: $scope.mensaje,
+                            subject: 'From Full Cordova APP: ' + ctrl.email,
+                            body: ctrl.mensaje,
                             isHtml: true
                         };
 
@@ -57,7 +59,7 @@ angular.module('app.controllers')
                         alert("EMAIL NOT AVAILABLE");
                     });
                 } else {
-                    $scope.message("missing data");
+                    ctrl.message("missing data");
                     console.log("ERROR");
                 }
             };
