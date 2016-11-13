@@ -16,7 +16,7 @@ angular.module('app.route', [])
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/home.html',
-                                controller: 'PlaylistsCtrl'
+                                controller: 'homeCtrl as ctrl'
                             }
                         }
                     })

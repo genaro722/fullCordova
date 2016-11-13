@@ -12,6 +12,7 @@ angular.module('app',
             'app.route',
             'app.components',
             'app.services',
+            'pascalprecht.translate',
         'ngCordova'])
 
         .run(function ($ionicPlatform) {
