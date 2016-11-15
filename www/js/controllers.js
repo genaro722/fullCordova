@@ -3,7 +3,7 @@ angular.module('app.controllers', [])
         .controller('AppCtrl', function ($scope, $timeout, $ionicPopover, $ionicLoading, myConfiguration) {
 //            var $ctrl = this;
             
-            $scope.myLenguage = myConfiguration.getLanguage();
+            $scope.myLenguage = myConfiguration.getLanguage().language;
             $scope.viewImage = function (img) {
                 var image = "<img src='" + img + "'> <br> <h2>Full Cordova</h2>";
                 $ionicLoading.show({template: image, duration: 3000});
@@ -51,9 +51,9 @@ angular.module('app.controllers', [])
             };
 
             $scope.languages = [
-                {name: "English", img: "img/usa.png", text: "Hello, my name is CHARAWATO"},
-                {name: "Español", img: "img/spain.png", text: "Hola, mi nombre es CHARAWATO"},
-                {name: "Portuguess", img: "img/br.png", text: "Oi, meu nome é CHARAWATO"}
+                {name: "English", img: "img/usa.png", text: "Hello, my name is CHARAWATO", i18n: "en"},
+                {name: "Español", img: "img/spain.png", text: "Hola, mi nombre es CHARAWATO", i18n: "es"},
+                {name: "Portuguess", img: "img/br.png", text: "Oi, meu nome é CHARAWATO", i18n: "pt"}
             ];
 
             $scope.openLanguage = function () {
@@ -67,7 +67,7 @@ angular.module('app.controllers', [])
 
             $scope.selectLenguage = function (item) {
                 $scope.myLenguage = item.img;
-                myConfiguration.setLanguage(item.img);
+                myConfiguration.setLanguage(item);
                 $scope.closePopover();
             };
 

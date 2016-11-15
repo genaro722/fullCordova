@@ -7,12 +7,12 @@
 angular.module('app',
         ['ionic',
             'app.controllers',
+            'app.services',
+            'pascalprecht.translate',
             'ionic-material',
             'ionMdInput',
             'app.route',
             'app.components',
-            'app.services',
-            'pascalprecht.translate',
         'ngCordova'])
 
         .run(function ($ionicPlatform) {

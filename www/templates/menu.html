@@ -35,16 +35,16 @@
                                     Login
                                 </ion-item>-->
                 <ion-item menu-close href="#/app/home">
-                    <i class="fa fa-home margin-right-5"></i> home
+                    <i class="fa fa-home margin-right-5"></i> {{'HOME' | translate}}
                 </ion-item>
                 <ion-item menu-close href="#/app/components">
-                    <i class="fa fa-puzzle-piece margin-right-5"></i>components
+                    <i class="fa fa-puzzle-piece margin-right-5"></i> {{'COMPONENTS' | translate}}
                 </ion-item>
                 <ion-item menu-close href="#/app/settings">
-                    <i class="fa fa-gears margin-right-5"></i>Settings
+                    <i class="fa fa-gears margin-right-5"></i> {{'SETTINGS' | translate}}
                 </ion-item>
                 <ion-item menu-close class="white-text text-center" style="background-color: #33cd5f !important" ui-sref="app.contactUs">
-                    <i class="fa fa-envelope margin-right-5"></i>Contact Us
+                    <i class="fa fa-envelope margin-right-5"></i> {{'CONTACT_US' | translate}}
                 </ion-item>
             </ion-list>
         </ion-content>
@@ -65,19 +65,19 @@
     </ion-popover-view>
 </script>
 <script id="options-popover.html" type="text/ng-template">
-    <ion-popover-view style="position:absolute; top: 40px; left:74%; height:300px">
+    <ion-popover-view style="position:absolute; top: 40px; left:74%; height:35%">
     <ion-content>
     <li class="item" ng-click="camera()">
-    <i class="fa fa-camera"></i> Camera
+    <i class="fa fa-camera"></i> {{'CAMERA' | translate}}
     </li>
     <li class="item" ng-click="gallery()">
-    <i class="fa fa-picture-o"></i> Gallery
+    <i class="fa fa-picture-o"></i> {{'GALLERY' | translate}}
     </li>
     <li class="item" ng-click="voice()">
-    <i class="ion ion-mic-a"></i> Voice
+    <i class="ion ion-mic-a"></i> {{'VOICE' | translate}}
     </li>
     <li class="item" ng-click="scanner()">
-    <i class="ion ion-search"></i>Scanner
+    <i class="ion ion-search"></i> {{'SCANNER' | translate}}
     </li>
     </ul>
     </ion-content>

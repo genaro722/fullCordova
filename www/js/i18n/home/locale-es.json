@@ -1,4 +1,10 @@
 {
-   "HOME": "inicio",
-   "":""
+   "HOME": "INICIO",
+   "FLASHLIGHT": "Linterna",
+   "GEOLOCATION": "Ubicación",
+   "VIBRATE": "Vibración",
+   "LOCAL_NOTIFICACION": "Notificaciones Locales",
+   "BATTERY_STATUS": "Estado de la Bateria",
+   "SYSTEM_INFO": "Información del Sistema",
+   "TEAM_CHARAWATO": "GRUPO CHARAWATO"
 }

@@ -1,10 +1,12 @@
 angular.module('app.services', [])
-        .service('myConfiguration', ["$http", "$q", function ($http, $q) {
+        .service('myConfiguration', ["$http", "$q", "$translate", function ($http, $q, $translate) {
 
                 this.getLanguage = function (file, name) {
                     var language = localStorage.getItem("fullCordova-language");
                     if (language !== null && language !== undefined && language !== "") {
-                        return language;
+                        var i18n = localStorage.getItem("fullCordova-language-i18n");
+                        var all={language: language, i18n: i18n};
+                        return all;
                     } else {
                         return "img/usa.png";
                     }
@@ -12,7 +14,9 @@ angular.module('app.services', [])
                 };
 
                 this.setLanguage = function (item) {
-                    localStorage.setItem("fullCordova-language", item);
+                    localStorage.setItem("fullCordova-language", item.img);
+                    localStorage.setItem("fullCordova-language-i18n", item.i18n);
+                    $translate.use(item.i18n);
                 };
 
                 this.defaultConfig = function () {
