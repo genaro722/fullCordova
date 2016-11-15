@@ -5,12 +5,13 @@ angular.module('app.services', [])
                     var language = localStorage.getItem("fullCordova-language");
                     if (language !== null && language !== undefined && language !== "") {
                         var i18n = localStorage.getItem("fullCordova-language-i18n");
-                        var all={language: language, i18n: i18n};
+                        var all = {language: language, i18n: i18n};
                         return all;
                     } else {
-                        return "img/usa.png";
+                        var all = {language: "img/usa.png"};
+                        $translate.use('en');
+                        return all;
                     }
-//                      localStorage.setItem("preseeyl-token", resp.data.token);
                 };
 
                 this.setLanguage = function (item) {
