@@ -6,5 +6,7 @@
    "LOCAL_NOTIFICACION": "Notificação Local",
    "BATTERY_STATUS": "Estado da Bateria",
    "SYSTEM_INFO": "Informação do Sistema",
-   "TEAM_CHARAWATO": "EQUIPE CHARAWATO"
+   "TEAM_CHARAWATO": "EQUIPE CHARAWATO",
+   "CHARGING": "Cobrança",
+   "USIN_BATTERY": "Usando a Bateria"
 }

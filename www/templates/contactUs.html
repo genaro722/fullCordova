@@ -5,16 +5,18 @@
             <div class="row">
                 <div class="col">
                     <label class="item-input item-stacked-label">
-                        <span class="input-label" ng-class="{'white-text':images[aleatorio].white}">Your Email</span>
-                        <input type="email" ng-model="ctrl.email" placeholder="example: xxxxx@xxxx.com" style="padding-left: 10px">
+                        <span class="input-label" ng-class="{'white-text':ctrl.images[ctrl.aleatorio].white}">Your Email</span>
+                        <input type="email" ng-model="ctrl.email" class="contact" placeholder="example: xxxxx@xxxx.com" style="padding-left: 10px"
+                                ng-class="{'white-text':ctrl.images[ctrl.aleatorio].white}">
                     </label>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <label class="item-input item-stacked-label">
-                        <span class="input-label" ng-class="{'white-text':images[aleatorio].white}">Your Mesage</span>
-                        <textarea placeholder="mesage" ng-model="ctrl.mensaje" rows="8" style="padding-left: 10px"></textarea>
+                        <span class="input-label" ng-class="{'white-text':ctrl.images[ctrl.aleatorio].white}">Your Mesage</span>
+                        <textarea placeholder="mesage" ng-model="ctrl.mensaje" class="contact" rows="8" style="padding-left: 10px"
+                                   ng-class="{'white-text':ctrl.images[ctrl.aleatorio].white}"></textarea>
                     </label>
                 </div>
             </div>

@@ -13,6 +13,10 @@
 .default-color{
     border: 2px solid #958473;
 }
+.contact {
+    border: 2px solid #908e8e !important;
+    background-color: rgba(0, 0, 0, 0.28) !important;
+}
 .flash-color{
     background: #f89201;
     border: 2px solid #c26a13;
