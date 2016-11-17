@@ -5,6 +5,7 @@ angular.module('pascalprecht.translate').config(function ($translateProvider, $t
     });
     $translatePartialLoaderProvider.addPart('home');
     $translatePartialLoaderProvider.addPart('menu');
+    $translatePartialLoaderProvider.addPart('settings');
     var i18n = localStorage.getItem("fullCordova-language-i18n");
     if (i18n !== "" && i18n !== null && i18n !== undefined) {
         $translateProvider.preferredLanguage(i18n);

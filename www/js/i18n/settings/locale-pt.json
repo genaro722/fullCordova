@@ -1,0 +1,14 @@
+{
+   "SETTINGS": "Configurações",
+   "CAMERA":"Câmera",
+   "CAMERA_SAVE":"Você quer salvar a foto?",
+   "CAMERA_EDIT":"Você quer editar a foto?",
+   "GALLERY":"Galeria",
+   "GALLERY_MANY":"Quantas fotos você quer escolher?",
+   "VIBRATION":"Vibração",
+   "VIBRATION_TIME":"Duração (milissegundos)",
+   "VOICE":"Mensagem de Voz",
+   "VOICE_TIME":"Duração (milissegundos)",
+   "DEFAULT":"Padrão",
+   "SAVE":"Salvar"
+}

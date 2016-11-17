@@ -6,7 +6,11 @@
    "LOCAL_NOTIFICACION": "Notificaciones Locales",
    "BATTERY_STATUS": "Estado de la Bateria",
    "SYSTEM_INFO": "Información del Sistema",
-   "TEAM_CHARAWATO": "GRUPO CHARAWATO",
+   "CAMERA": "Cámara",
+   "GALLERY": "Galería",
+   "VOICE": "Nota de Voz",
+   "SCANNER": "Escáner",
    "CHARGING": "Cargando",
-   "USIN_BATTERY": "Usando la Bateria"
+   "USIN_BATTERY": "Usando la Bateria",
+   "TEAM_CHARAWATO": "GRUPO CHARAWATO"
 }

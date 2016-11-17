@@ -31,7 +31,6 @@ function starsCtrl($scope, $timeout) {
         }
     });
     $scope.$watch('$ctrl.value', function (newValue, oldValue) {
-        console.log($ctrl.value);
         if ($ctrl.value !== null && $ctrl.value !== undefined && $ctrl.value !== "") {
             $ctrl.stars();
         } else {
@@ -39,7 +38,7 @@ function starsCtrl($scope, $timeout) {
             for (var i = 0; i < 5; i++) {
                 $ctrl.estrella.push("fa-star-o");
             }
-            $ctrl.value = 0;
+//            $ctrl.value = 0;
 //            $ctrl.config.response = $ctrl.value;
         }
     });
@@ -83,32 +82,36 @@ function starsCtrl($scope, $timeout) {
     };
 
     $ctrl.stars = function () {
-        $ctrl.estrella = [];
-        if ($ctrl.value % 1 === 0) {
-//        console.log("Es un numero entero");
-            for (var i = 0; i < $ctrl.value; i++) {
-                $ctrl.estrella.push("fa-star");
-            }
-            var resto = 5 - $ctrl.value;
-            for (var a = 0; a < resto; a++) {
-                $ctrl.estrella.push("fa-star-o");
-            }
+        if ($ctrl.value > 5) {
+
         } else {
-            var number = String($ctrl.value);
+            $ctrl.estrella = [];
+            if ($ctrl.value % 1 === 0) {
+//        console.log("Es un numero entero");
+                for (var i = 0; i < $ctrl.value; i++) {
+                    $ctrl.estrella.push("fa-star");
+                }
+                var resto = 5 - $ctrl.value;
+                for (var a = 0; a < resto; a++) {
+                    $ctrl.estrella.push("fa-star-o");
+                }
+            } else {
+                var number = String($ctrl.value);
 //        console.log("Es un numero decimal");
-            var sp = number.split(".");
-            sp[0] = parseInt(sp[0], 10);
-            for (var e = 0; e < sp[0]; e++) {
-                $ctrl.estrella.push("fa-star");
-            }
-            $ctrl.estrella.push("fa-star-half-o");
-            sp[2] = 5 - sp[0] - 1;
+                var sp = number.split(".");
+                sp[0] = parseInt(sp[0], 10);
+                for (var e = 0; e < sp[0]; e++) {
+                    $ctrl.estrella.push("fa-star");
+                }
+                $ctrl.estrella.push("fa-star-half-o");
+                sp[2] = 5 - sp[0] - 1;
 //            console.log(sp[2]);
-            for (var o = 0; o < sp[2]; o++) {
-                $ctrl.estrella.push("fa-star-o");
+                for (var o = 0; o < sp[2]; o++) {
+                    $ctrl.estrella.push("fa-star-o");
+                }
             }
-        }
 //        $ctrl.config.response = $ctrl.value;
+        }
     };
 
 }

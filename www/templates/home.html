@@ -6,30 +6,49 @@
                 <i class="fa fa-bolt fa-3x white-text"></i>
                 <p class="white-text">{{'FLASHLIGHT' | translate}}</p>
             </button>
-            <button class="col col-50 home-container text-center default-color"
-                    ng-click="ctrl.location()" ng-disabled="ctrl.loadingLocation">
+            <button class="col col-50 home-container text-center default-color" ng-click="ctrl.location()" ng-disabled="ctrl.loadingLocation">
                 <i class="fa fa-3x white-text" ng-class="{'fa-map':ctrl.loadingLocation===false, 'fa-spin fa-spinner':ctrl.loadingLocation===true}"></i>
                 <p class="white-text">{{'GEOLOCATION' | translate}}</p>
             </button>
         </div>
         <div class="row">
+            <button class="col col-50 home-container text-center default-color" ng-click="ctrl.camera()">
+                <i class="fa fa-camera fa-3x white-text"></i>
+                <p class="white-text">{{'CAMERA' | translate}}</p>
+            </button>
+            <button class="col col-50 home-container text-center default-color" ng-click="ctrl.gallery()">
+                <i class="fa fa-picture-o fa-3x white-text"></i>
+                <p class="white-text">{{'GALLERY' | translate}}</p>
+            </button>
+        </div>
+        <div class="row">
+            <button class="col col-50 home-container text-center default-color" ng-click="ctrl.voice()">
+                <i class="ion ion-mic-a fa-3x white-text"></i>
+                <p class="white-text">{{'VOICE' | translate}}</p>
+            </button>
+            <button class="col col-50 home-container text-center default-color" ng-click="ctrl.scanner()">
+                <i class="ion ion-qr-scanner fa-3x white-text"></i>
+                <p class="white-text">{{'SCANNER' | translate}}</p>
+            </button>
+        </div>
+        <div class="row">
             <button class="col col-50 home-container text-center default-color"
                  ng-click="ctrl.vibration()">
-                <img class="fa" src="img/vibration.png" style="max-height: 50px">
+                <i class="ion ion-iphone fa-3x white-text"></i>
                 <p class="white-text">{{'VIBRATE' | translate}}</p>
             </button>
             <button class="col col-50 home-container text-center default-color" ng-click="ctrl.localNotification()">
                 <!--<i class="ion ion-android-phone-landscape fa-3x white-text" ng-hide="orientation"></i>-->
                 <!--<i class="ion ion-android-phone-portrait fa-3x white-text" ng-show="orientation"></i>-->
-                <i class="fa fa-comments-o fa-3x white-text"></i>
+                <i class="ion ion-chatbox-working fa-3x white-text"></i>
                 <p class="white-text"><s>{{'LOCAL_NOTIFICACION' | translate}}</s></p>
             </button>
         </div>
         <div class="row">
             <button class="col col-50 home-container text-center battery-color" ng-disabled="ctrl.result.level===null"
                  ng-click="ctrl.battery()">
-                <i class="fa fa-3x white-text" ng-class="{'fa-battery':ctrl.result.level>75 , 'fa-battery-three-quarters':ctrl.result.level<=75 && ctrl.result.level>60,'fa-battery-half':ctrl.result.level<=60 && ctrl.result.level>30,
-                            'fa-battery-quarter':ctrl.result.level<=30 && ctrl.result.level>10,'fa-battery-empty':ctrl.result.level<=10 && ctrl.result.level!==null ,'fa-spinner fa-spin':ctrl.result.level===null}"></i>
+                <i class="fa fa-3x white-text" ng-class="{'fa-battery':ctrl.result.level>75 , 'fa-battery-three-quarters':ctrl.result.level<=75 && ctrl.result.level>60 && ctrl.result.level!==null ,'fa-battery-half':ctrl.result.level<=60 && ctrl.result.level>30 && ctrl.result.level!==null ,
+                            'fa-battery-quarter':ctrl.result.level<=30 && ctrl.result.level>10 && ctrl.result.level!==null ,'fa-battery-empty':ctrl.result.level<=10 && ctrl.result.level!==null ,'fa-spinner fa-spin':ctrl.result.level===null}"></i>
                 <p class="white-text">{{'BATTERY_STATUS' | translate}}</p>
                 <small class="white-text">{{ctrl.bateryStatus | translate}}</small>
             </button>

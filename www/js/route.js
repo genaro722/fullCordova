@@ -34,7 +34,7 @@ angular.module('app.route', [])
                         views: {
                             'menuContent': {
                                 templateUrl: 'templates/containersComponents/starsContainer.html',
-                                controller: 'starsContainerCtrl'
+                                controller: 'starsContainerCtrl as ctrl'
                             }
                         }
                     })

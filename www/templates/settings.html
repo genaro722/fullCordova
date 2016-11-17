@@ -1,144 +1,144 @@
-<ion-view view-title="Settings">
+<ion-view view-title="{{'SETTINGS'|translate}}">
     <ion-content style="background: white">
         <!--<ion-tabs class="tabs-calm tabs-icon-top">-->
 
-            <!--<ion-tab title="Home" icon-on="ion-home" icon-off="ion-ios-home-outline">-->
-                <!--<div class="list has-header" style="max-height: 95%">-->
-                <div class="list" style="max-height: 95%">
-                    <ion-scroll style="max-height: 85%">
-                        <div class="item item-divider font-18">
-                            Camera
-                        </div>
-                        <div class="item  item-toggle">
-                            <span>Do you want save the Photos?</span>
-                            <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="config[0]" class="btn-green">
-                                <div class="track">
-                                    <div class="handle"></div>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="item  item-toggle">
-                            <span>Do you want edit the Photos?</span>
-                            <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="config[1]" class="btn-green">
-                                <div class="track">
-                                    <div class="handle"></div>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="item item-divider font-18">
-                            Gallery
-                        </div>
-<!--                        <div class="item  item-toggle">
-                            <span>Do you want select multiple Photos?</span>
-                            <label class="toggle toggle-calm my-toggle">
-                                <input type="checkbox" ng-model="config[2]>1" class="btn-green">
-                                <div class="track">
-                                    <div class="handle"></div>
-                                </div>
-                            </label>
-                        </div>-->
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">How many photos do you want select? (1 - 10)</span>
-                            <input type="number" placeholder="How many photos?" min="1" max="10"
-                                   ng-model="config[2]">
-                        </label>
-                        <div class="item item-divider font-18">
-                            Vibration
-                        </div>
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Duration (seg)</span>
-                            <input type="number" placeholder="duration" min="1" max="10000" 
-                                   ng-model="config[3]">
-                        </label>
-                        <div class="item item-divider font-18">
-                            Voice
-                        </div>
-<!--                        <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
-                            <input type="number" placeholder="duration" min="1" max="10" 
-                                   ng-model="audioLimit">
-                        </label>-->
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Duration (seg)</span>
-                            <input type="number" placeholder="duration" min="1" max="10000" 
-                                   ng-model="config[4]">
-                        </label>
-<!--                        <div class="item item-divider font-18">
-                            Capture
-                        </div>
-                        <label class="item item-input item-stacked-label">
-                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
-                            <input type="number" placeholder="duration" min="1" max="10" 
-                                   ng-model="captureLimit">
-                        </label>-->
-                    </ion-scroll>
-                    <div class="row">
-                        <div class="col col-50">
-                            <buttom  class="button button-dark" style="min-width:100%" ng-click="makeDefault()">
-                                Default
-                            </buttom>
-                        </div>
-                        <div class="col col-50">
-                            <buttom  class="button button-calm" style="min-width:100%" ng-click="saveConfig()">
-                                <i class="fa fa-send-o"></i> Save
-                            </buttom>
-                        </div>
-                    </div>
+        <!--<ion-tab title="Home" icon-on="ion-home" icon-off="ion-ios-home-outline">-->
+        <!--<div class="list has-header" style="max-height: 95%">-->
+        <div class="list" style="max-height: 95%">
+            <ion-scroll style="max-height: 85%">
+                <div class="item item-divider font-18">
+                    {{'CAMERA'| translate}}
                 </div>
-            <!--</ion-tab>-->
+                <div class="item  item-toggle">
+                    <span>{{'CAMERA_SAVE'| translate}}</span>
+                    <label class="toggle toggle-calm my-toggle">
+                        <input type="checkbox" ng-model="config[0]" class="btn-green">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+                <div class="item  item-toggle">
+                    <span>{{'CAMERA_EDIT'| translate}}</span>
+                    <label class="toggle toggle-calm my-toggle">
+                        <input type="checkbox" ng-model="config[1]" class="btn-green">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+                <div class="item item-divider font-18">
+                    {{'GALLERY'|translate}}
+                </div>
+                <!--                        <div class="item  item-toggle">
+                                            <span>Do you want select multiple Photos?</span>
+                                            <label class="toggle toggle-calm my-toggle">
+                                                <input type="checkbox" ng-model="config[2]>1" class="btn-green">
+                                                <div class="track">
+                                                    <div class="handle"></div>
+                                                </div>
+                                            </label>
+                                        </div>-->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label font-16 font-bold" style="min-width: 100%;">{{'GALLERY_MANY'|translate}}(1 - 10)</span>
+                    <input type="number" placeholder="How many photos?" min="1" max="10"
+                           ng-model="config[2]">
+                </label>
+                <div class="item item-divider font-18">
+                    {{'VIBRATION'|translate}}
+                </div>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label font-16 font-bold" style="min-width: 100%;">{{'VIBRATION_TIME'|translate}}</span>
+                    <input type="number" placeholder="duration" min="1" max="10000" 
+                           ng-model="config[3]">
+                </label>
+                <div class="item item-divider font-18">
+                    {{'VOICE'|translate}}
+                </div>
+                <!--                        <label class="item item-input item-stacked-label">
+                                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
+                                            <input type="number" placeholder="duration" min="1" max="10" 
+                                                   ng-model="audioLimit">
+                                        </label>-->
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label font-16 font-bold" style="min-width: 100%;">{{'VOICE_TIME'|translate}}</span>
+                    <input type="number" placeholder="duration" min="1" max="10000" 
+                           ng-model="config[4]">
+                </label>
+                <!--                        <div class="item item-divider font-18">
+                                            Capture
+                                        </div>
+                                        <label class="item item-input item-stacked-label">
+                                            <span class="input-label font-16 font-bold" style="min-width: 100%;">Limit (times)</span>
+                                            <input type="number" placeholder="duration" min="1" max="10" 
+                                                   ng-model="captureLimit">
+                                        </label>-->
+            </ion-scroll>
+            <div class="row">
+                <div class="col col-50">
+                    <buttom  class="button button-dark" style="min-width:100%" ng-click="makeDefault()">
+                        {{'DEFAULT'|translate}}
+                    </buttom>
+                </div>
+                <div class="col col-50">
+                    <buttom  class="button button-calm" style="min-width:100%" ng-click="saveConfig()">
+                        <i class="fa fa-send-o"></i> {{'SAVE'|translate}}
+                    </buttom>
+                </div>
+            </div>
+        </div>
+        <!--</ion-tab>-->
 
-            <!--            <ion-tab title="Components" icon-on="ion-ios-pie" icon-off="ion-ios-pie-outline">
-                            <div class="list has-header">
-                                <ion-scroll style="max-height: 85%">
-                                    <div class="item item-divider font-18">
-                                        Multi Checks
-                                    </div>
-                                                            <ion-toggle ng-model="delete">
-                                                                Show Delete?
-                                                            </ion-toggle>
-                                                            <ion-toggle ng-model="move">
-                                                                Move?
-                                                            </ion-toggle>
-                                    <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
-                                        <ion-item ng-show="configlocation.list.length===0">
-                                            Lista vacia
-                                        </ion-item>
-                                        <ion-item ng-repeat="item in configlocation.list track by $index">
-                                            {{item.name}}
-                                            <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
-                                                               ng-click="deleteItem($index)">
-                                            </ion-delete-button>
-                                            <ion-reorder-button class="ion-navicon"
-                                                                on-reorder="moveItem(item, $fromIndex, $toIndex)">
-                                            </ion-reorder-button>
-                                        </ion-item>
-                                    </ion-list>
-                                    <div class="item item-divider font-18">
-                                        Drop Down
-                                    </div>
-                                    <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
-                                        <ion-item ng-show="configLocationDown.list.length===0">
-                                            Lista vacia
-                                        </ion-item>
-                                        <ion-item ng-repeat="item in configLocationDown.list track by $index">
-                                            {{item.name}}
-                                            <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
-                                                               ng-click="deleteItem2($index)">
-                                            </ion-delete-button>
-                                            <ion-reorder-button class="ion-navicon"
-                                                                on-reorder="moveItem2(item, $fromIndex, $toIndex)">
-                                            </ion-reorder-button>
-                                        </ion-item>
-                                    </ion-list>
-                                </ion-scroll>
-                            </div>
-                        </ion-tab>-->
+        <!--            <ion-tab title="Components" icon-on="ion-ios-pie" icon-off="ion-ios-pie-outline">
+                        <div class="list has-header">
+                            <ion-scroll style="max-height: 85%">
+                                <div class="item item-divider font-18">
+                                    Multi Checks
+                                </div>
+                                                        <ion-toggle ng-model="delete">
+                                                            Show Delete?
+                                                        </ion-toggle>
+                                                        <ion-toggle ng-model="move">
+                                                            Move?
+                                                        </ion-toggle>
+                                <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
+                                    <ion-item ng-show="configlocation.list.length===0">
+                                        Lista vacia
+                                    </ion-item>
+                                    <ion-item ng-repeat="item in configlocation.list track by $index">
+                                        {{item.name}}
+                                        <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
+                                                           ng-click="deleteItem($index)">
+                                        </ion-delete-button>
+                                        <ion-reorder-button class="ion-navicon"
+                                                            on-reorder="moveItem(item, $fromIndex, $toIndex)">
+                                        </ion-reorder-button>
+                                    </ion-item>
+                                </ion-list>
+                                <div class="item item-divider font-18">
+                                    Drop Down
+                                </div>
+                                <ion-list show-delete="delete" show-reorder="move" can-swipe="true">
+                                    <ion-item ng-show="configLocationDown.list.length===0">
+                                        Lista vacia
+                                    </ion-item>
+                                    <ion-item ng-repeat="item in configLocationDown.list track by $index">
+                                        {{item.name}}
+                                        <ion-delete-button class="ion-minus-circled" style="padding: 0px; box-shadow: 0 0px 0px 0 rgba(0,0,0,.16),0 0px 0px 0 rgba(0,0,0,.12)"
+                                                           ng-click="deleteItem2($index)">
+                                        </ion-delete-button>
+                                        <ion-reorder-button class="ion-navicon"
+                                                            on-reorder="moveItem2(item, $fromIndex, $toIndex)">
+                                        </ion-reorder-button>
+                                    </ion-item>
+                                </ion-list>
+                            </ion-scroll>
+                        </div>
+                    </ion-tab>-->
 
-            <!--<ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">-->
-            <!-- Tab 3 content -->
-            <!--</ion-tab>-->
+        <!--<ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">-->
+        <!-- Tab 3 content -->
+        <!--</ion-tab>-->
 
         <!--</ion-tabs>-->
     </ion-content>

@@ -3,6 +3,9 @@
         <ion-scroll style="max-height: 510px">
             <h5 class="text-center" style="margin: 10px">En esta seccion se mostraran componentes configurables Angular, los cuales te ayudaran a realizar acciones en tu proyecto de una manera rapida</h5>
             <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
+                ui-sref="app.stars-components">My Stars</h4>
+            <!--<my-stars config="configStars" value="valueStars" ng-hide="hideStar"></my-stars>-->
+            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
                 ng-click="hideCheck = !hideCheck">Multi Checks</h4>
             <multi-checks config="configlocation" ng-hide="hideCheck"></multi-checks>
             <ion-list ng-hide="hideCheck">
@@ -13,9 +16,6 @@
             <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
                 ng-click="hideDropdown = !hideDropdown">Dropdown</h4>
             <drop-down config="configLocationDown" ng-hide="hideDropdown"></drop-down>
-            <h4 style="margin: 5px; padding: 4px; background: #7a7878; border:2px solid rgba(97, 93, 93, 0.4)" class="white-text"
-                ui-sref="app.stars-components">Stars</h4>
-            <!--<my-stars config="configStars" value="valueStars" ng-hide="hideStar"></my-stars>-->
         </ion-scroll>
     </ion-content>
     <div class="bar bar-footer bar-balanced" ui-sref="app.contactUs">
